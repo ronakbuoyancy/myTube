@@ -1,0 +1,133 @@
+.videoContainer {
+    padding-top: 68px;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    position: relative;
+}
+
+.videoContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.videoScreen {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.video {
+    width: 100%;
+    height: 200px;
+    background-color: rgb(13, 134, 150);
+    position: relative;
+}
+
+.video img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.video span {
+    position: absolute;
+    float: right;
+    right: 6px;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    bottom: 6px;
+    background-color: black;
+    border-radius: 10px;
+    padding: 5px;
+    align-items: center;
+    padding-top: 2px;
+}
+
+.videoDetails {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.image {
+    margin-left: 8px;
+    width: 40px;
+    height: 40px;
+}
+
+.image img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.detail {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+
+}
+
+.title {
+    font-weight: bold;
+    text-transform: capitalize;
+    height: 35px;
+    overflow: hidden;
+    font-size: 13px;
+}
+
+.channel {
+    color: grey;
+    font-size: 13px;
+    height: 15px;
+    /* border:1px solid red; */
+    display: flex;
+    align-items: center;
+
+}
+
+.oneDot {
+    height: 15px;
+    padding-top: 6px;
+}
+
+.dot {
+    width: 40px;
+    height: 40px;
+    padding-top: 7px;
+    display: flex;
+    cursor: pointer;
+}
+
+.videoModal {
+    position: absolute;
+    margin-left: 25px;
+    bottom: 20px;
+    width: 350px;
+    height: auto;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.videoModalRow {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+.videoModalSymbol {
+    margin-left: 20px;
+    text-align: center;
+    height: 100%;
+    margin-top: 11px;
+}
+
+.videoModalText {
+    margin-left: 20px;
+    margin-top: 8px;
+}
