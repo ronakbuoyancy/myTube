@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from './Header.module.css'
 import { ImYoutube } from "react-icons/im";
 import { HiOutlineDotsVertical } from "react-icons/hi";
-import { IoIosSearch, IoMdMic,IoLogoYoutube } from "react-icons/io";
+import { IoIosSearch, IoMdMic, IoLogoYoutube } from "react-icons/io";
 import { MdArrowBack } from "react-icons/md";
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -11,7 +11,7 @@ function Header({ setAccountModal }) {
     const [searchModal, setSearchModal] = useState(false)
     const location = useLocation()
     const navigate = useNavigate()
-
+    console.log('Test')
     return (
         <div>
             {searchModal ?
@@ -27,9 +27,9 @@ function Header({ setAccountModal }) {
                 :
                 <div className={location.pathname === '/videoscreen' ?
                     styles.videoScreenHeader : styles.header}>
-                    <div onClick={() => navigate('/')} 
-                    className={location.pathname === '/videoscreen' ?
-                        styles.videoScreenTitle : styles.headerTitle}>
+                    <div onClick={() => navigate('/')}
+                        className={location.pathname === '/videoscreen' ?
+                            styles.videoScreenTitle : styles.headerTitle}>
                         <IoLogoYoutube className={styles.icon} />
                         <p>MyTube</p>
                     </div>
