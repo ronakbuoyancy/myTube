@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import styles from './VideoScreen.module.css'
+import styles from './Home.module.css'
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { MdNotInterested, MdClose } from "react-icons/md";
-import { BsDot, BsClock } from "react-icons/bs";
+import { BsClock, BsDot } from "react-icons/bs";
 import Header from '../Header/Header';
 import Category from '../Category/Category';
 import Account from '../Account/Account';
+import { useNavigate } from 'react-router-dom';
+import Footer from '../Footer/Footer';
+import PopupModal from '../PopupModal/PopupModal';
 
-function VideoScreen() {
-  const [videoModal, setVideoModal] = useState(false)
+function Home() {
+  const [PopupModal, setPopupModal] = useState(false)
   const [categoryName, setCategoryName] = useState()
   const [activeCategory, setactiveCategory] = useState('all')
   const [filterData, setFilterData] = useState()
   const [accountModal, setAccountModal] = useState(false)
-
+  const navigate = useNavigate()
   useEffect(() => {
     filterDataHandler()
   }, [categoryName])
@@ -49,6 +52,20 @@ function VideoScreen() {
       categoryType: 'movie'
     },
   ]
+  const popupData = [
+    {
+      value: 'Not interested',
+      icon: MdNotInterested
+    },
+    {
+      value: "Don't recommend chamnel",
+      icon: MdClose
+    },
+    {
+      value: 'Save to Watch later',
+      icon: BsClock
+    },
+  ]
   const filterDataHandler = () => {
     if (categoryName) {
       const new2 = allData.filter((item) => (item.categoryType === categoryName))
@@ -64,7 +81,7 @@ function VideoScreen() {
     }
   }
   return (
-    <>{
+    <div>{
       accountModal ? <Account
         setAccountModal={setAccountModal} /> : <>
         <Header
@@ -76,7 +93,10 @@ function VideoScreen() {
           {filterData?.map((item, index) => (
             <div className={styles.videoScreen} key={index}>
               <div className={styles.video}>
-                <img src={item.video}></img>
+                <img src={item.video}
+                  onClick={() =>
+                    navigate('/videoscreen', { state: { selecteditem: item } })}>
+                </img>
                 <span>{item.videoTime}</span>
               </div>
               <div className={styles.videoDetails}>
@@ -85,7 +105,7 @@ function VideoScreen() {
                 </div>
                 <div className={styles.detail}>
                   <div className={styles.title}>
-                    {item.videoTitle}
+                  {`${item.videoTitle.substring(0, 70)}...`}
                   </div>
                   <div className={styles.channel}>
                     {item.channelName} <span><BsDot className={styles.oneDot} /></span> {item.videoView} views <span><BsDot className={styles.oneDot} /></span> {item.videoLaunch}
@@ -93,36 +113,26 @@ function VideoScreen() {
 
                 </div>
                 <div className={styles.dot}>
-                  <HiOutlineDotsVertical onClick={() => {
-                    setVideoModal(!videoModal)
-                  }} />
+                  <HiOutlineDotsVertical 
+                  // onClick={() => {
+                  //   setPopupModal(!PopupModal)
+                  // }} 
+                  />
                 </div>
               </div>
             </div>
           ))}
         </div>
-        {videoModal &&
-          <div className={styles.videoModal}>
-            <div className={styles.videoModalRow}>
-              <MdNotInterested className={styles.videoModalSymbol} />
-              <p className={styles.videoModalText}>Not interested</p>
-            </div>
-            <div className={styles.videoModalRow}>
-              <MdClose
-                className={styles.videoModalSymbol} />
-              <p className={styles.videoModalText}>Don't recommend chamnel</p>
-            </div>
-            <div className={styles.videoModalRow}>
-              <BsClock
-                className={styles.videoModalSymbol} />
-              <p className={styles.videoModalText}>Save to Watch later</p>
-            </div>
-          </div>
+        {PopupModal &&
+          <PopupModal
+            setPopupModal={setPopupModal}
+            popupData={popupData} />
         }
+        <Footer />
       </>}
 
-    </>
+    </div>
   )
 }
 
-export default VideoScreen;
+export default Home;

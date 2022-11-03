@@ -10,6 +10,19 @@
     display: none;
 }
 
+.closeVideoModal {
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.closeVideoModalSymbol:hover {
+    background-color: brown;
+    color: white;
+    border: none;
+}
+
 .videoScreen {
     display: flex;
     flex-direction: column;
@@ -39,10 +52,9 @@
     color: white;
     bottom: 6px;
     background-color: black;
-    border-radius: 10px;
-    padding: 5px;
+    border-radius: 5px;
+    padding: 2px 7px;
     align-items: center;
-    padding-top: 2px;
 }
 
 .videoDetails {
@@ -102,32 +114,5 @@
     cursor: pointer;
 }
 
-.videoModal {
-    position: absolute;
-    margin-left: 25px;
-    bottom: 20px;
-    width: 350px;
-    height: auto;
-    background-color: white;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-}
 
-.videoModalRow {
-    display: flex;
-    flex-direction: row;
-    cursor: pointer;
-}
 
-.videoModalSymbol {
-    margin-left: 20px;
-    text-align: center;
-    height: 100%;
-    margin-top: 11px;
-}
-
-.videoModalText {
-    margin-left: 20px;
-    margin-top: 8px;
-}

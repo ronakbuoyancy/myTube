@@ -1,12 +1,14 @@
 import './App.css';
-import VideoScreen from './components/VideoScreen.js/VideoScreen';
+import Home from './components/Home.js/Home';
 import { Routes, Route } from 'react-router-dom'
+import VideoScreen from './components/VideoScreen/VideoScreen';
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<VideoScreen />} />
+        <Route exact path='/' element={<Home />} />
+        <Route path='/videoscreen' element={<VideoScreen />} />
       </Routes>
     </div>
   );

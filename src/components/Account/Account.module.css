@@ -78,4 +78,33 @@
 .youtubeRow p {
     margin-left: 30px;
     margin-top: 15px;
+    color: grey;
+}
+
+.youtubeRowSymbol {
+    background-color: white;
+    color: red;
+    border-radius: 50%;
+}
+
+.footer {
+    display: flex;
+    position: fixed;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    z-index: 2;
+    background-color: white;
+    font-size: 16px;
+    height: 40px;
+}
+
+.footer span {
+    font-weight: bold;
+}
+
+.oneDot {
+    height: 10px;
+    padding-top: 6px;
 }

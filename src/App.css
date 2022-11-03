@@ -2,10 +2,13 @@
   margin: auto;
   max-width: 400px;
   height: 100vh;
-  overflow:auto;
+  overflow: auto;
   -ms-overflow-style: none;
-    scrollbar-width: none;
+  scrollbar-width: none;
+  margin-top: 0px;
+  font-family: Roboto, Arial, sans-serif;
 }
+
 .App::-webkit-scrollbar {
   display: none;
 }

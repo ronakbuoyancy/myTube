@@ -1,0 +1,37 @@
+.videoModal {
+    position: absolute;
+    margin-left: 25px;
+    bottom: 25px;
+    width: 350px;
+    height: auto;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    z-index: 5;
+}
+
+.videoModalRow {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+.videoModalSymbol {
+    margin-left: 20px;
+    text-align: center;
+    height: 100%;
+    margin-top: 11px;
+}
+
+.videoModalText {
+    margin-left: 20px;
+    margin-top: 8px;
+}
+
+.closeVideoModalSymbol {
+    position: absolute;
+    right: 25px;
+    top: 15px;
+    font-size: 18px;
+}
