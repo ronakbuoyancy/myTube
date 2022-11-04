@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './Account.module.css'
-import { MdClose, MdOutlineSwitchAccount, MdOutlineFeedback } from "react-icons/md";
+import { MdClose, MdLogout, MdOutlineFeedback } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
 import { BsPersonSquare, BsDot } from "react-icons/bs";
 import { CgYoutube } from "react-icons/cg";
@@ -9,7 +9,10 @@ import { FaUserShield } from "react-icons/fa";
 import { IoSettingsOutline, IoLogoYoutube } from "react-icons/io5";
 import { TfiHelpAlt } from "react-icons/tfi";
 import { SiYoutubemusic, SiYoutubegaming } from "react-icons/si";
+import { useNavigate } from 'react-router-dom';
 function Account({ setAccountModal }) {
+    const navigate = useNavigate()
+
     return (
         <div>
             <div className={styles.header}>
@@ -34,25 +37,25 @@ function Account({ setAccountModal }) {
                     <p>your channel</p>
                 </div>
                 <div className={styles.youtubeRow}>
-                    <MdOutlineSwitchAccount />
-                    <p>switch account</p>
+                    <MdLogout />
+                    <p onClick={() => navigate('/login')}>log out</p>
                 </div>
             </div>
-            <div style={{ marginTop: '10px', borderBottom: '1px solid grey' }}>
+            <div style={{ marginTop: '10px' }}>
                 <div className={styles.youtubeRow}>
-                    <CgYoutube />
-                    <p>Get YouTube Premium</p>
+                    <IoSettingsOutline />
+                    <p>setting</p>
                 </div>
                 <div className={styles.youtubeRow}>
-                    <HiOutlineCurrencyDollar />
-                    <p>Purchases and memberships</p>
+                    <TfiHelpAlt />
+                    <p>help</p>
                 </div>
                 <div className={styles.youtubeRow}>
-                    <FaUserShield />
-                    <p>Your data in YouTube</p>
+                    <MdOutlineFeedback />
+                    <p>feedback</p>
                 </div>
             </div>
-            <div style={{ marginTop: '10px', borderBottom: '1px solid grey' }}>
+            {/* <div style={{ marginTop: '10px', borderBottom: '1px solid grey' }}>
                 <div className={styles.youtubeRow}>
                     <IoSettingsOutline />
                     <p>setting</p>
@@ -81,7 +84,7 @@ function Account({ setAccountModal }) {
                     <SiYoutubegaming className={styles.youtubeRowSymbol} />
                     <p>youTube kids</p>
                 </div>
-            </div>
+            </div> */}
             <div className={styles.footer}>
                 <p>Privacy Policy <BsDot className={styles.oneDot} /> <span>Terms of Service</span></p>
             </div>

@@ -78,3 +78,48 @@
     border-radius: 20px;
     margin-right: 15px;
 }
+
+.LikeContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-transform: capitalize;
+    justify-content: space-between;
+    scroll-behavior: smooth;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    height: 45px;
+}
+
+.LikeContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.Like_share {
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    background-color: rgb(224, 224, 224);
+    border-radius: 20px;
+    margin-left: 15px;
+    height: 40px;
+    padding: 0px 10px;
+    justify-content: space-evenly;
+}
+
+.Like_share p {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.playerWrapper {
+    position: relative;
+    padding-top: 56.25%;
+}
+
+.ReactPlayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

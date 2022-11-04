@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './Header.module.css'
-import { ImYoutube } from "react-icons/im";
+import { SiBbciplayer } from "react-icons/si";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { IoIosSearch, IoMdMic, IoLogoYoutube } from "react-icons/io";
 import { MdArrowBack } from "react-icons/md";
@@ -30,7 +30,7 @@ function Header({ setAccountModal }) {
                     <div onClick={() => navigate('/')}
                         className={location.pathname === '/videoscreen' ?
                             styles.videoScreenTitle : styles.headerTitle}>
-                        <IoLogoYoutube className={styles.icon} />
+                        <SiBbciplayer className={styles.icon} />
                         <p>MyTube</p>
                     </div>
                     <div className={styles.headerSearch}>

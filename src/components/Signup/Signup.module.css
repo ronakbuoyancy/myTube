@@ -1,0 +1,79 @@
+@font-face {
+    font-family: "Teko";
+    src: local("Teko"),
+        url("../../assets/Font/Teko/Teko-Regular.ttf") format("truetype");
+}
+
+.title {
+    display: flex;
+    margin: auto;
+    text-align: center;
+    margin-top: 110px;
+    height: 150px;
+    justify-content: center;
+}
+
+.icon {
+    color: rgb(28, 137, 161);
+    font-size: 60px;
+    height: 150px;
+
+}
+
+.title p {
+    font-size: 50px;
+    height: 150px;
+    margin-left: 10px;
+    font-family: Teko;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 80%;
+    margin-top: 20px;
+}
+
+.inputContainer input {
+    margin-top: 20px;
+    background-color: rgb(224, 224, 224);
+    outline: none;
+    border: none;
+    height: 45px;
+    font-size: 20px;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.checkbox {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    width: 80%;
+    margin-top: 20px;
+}
+
+input[type="checkbox" i] {
+    width: 25px;
+}
+
+.checkbox p {
+    margin-left: 10px;
+}
+
+.btn {
+    display: flex;
+    margin: auto;
+    width: 80%;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.btn button {
+    padding: 10px 46px;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+}
