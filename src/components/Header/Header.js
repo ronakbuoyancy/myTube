@@ -11,7 +11,6 @@ function Header({ setAccountModal }) {
     const [searchModal, setSearchModal] = useState(false)
     const location = useLocation()
     const navigate = useNavigate()
-    console.log('Test')
     return (
         <div>
             {searchModal ?

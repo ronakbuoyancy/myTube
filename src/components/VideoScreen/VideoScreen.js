@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Category from '../Category/Category'
 import Header from '../Header/Header'
 import styles from './VideoScreen.module.css'
@@ -7,10 +7,13 @@ import { BsDot } from "react-icons/bs";
 import PopupModal from '../PopupModal/PopupModal';
 import { MdNotInterested, MdClose } from "react-icons/md";
 import { BsClock } from "react-icons/bs";
+import ReactPlayer from "react-player";
+
 
 function VideoScreen() {
     const location = useLocation()
     const videoDetails = location.state.selecteditem
+    const videoRef = useRef()
     // const [PopupModal, setPopupModal] = useState(false)
 
     const popupData = [
@@ -27,15 +30,28 @@ function VideoScreen() {
             icon: BsClock
         },
     ]
-    console.log({ PopupModal });
+    console.log(videoDetails);
     return (
         <div>
             <Header
             // setPopupModal={setPopupModal}
             />
             {/* <Category /> */}
+
             <div className={styles.video}>
-                <img src={videoDetails.video} />
+                {/* <img src={videoDetails.video} /> */}
+                <video width="100%" height="100%" controls >
+                    <source src={videoDetails.url} type="video/mp4" />
+                </video>
+                {/* <ReactPlayer
+                    ref={videoRef}
+                    url='https://m.youtube.com/watch?v=c569nyDmug8'
+                    width="100%"
+                    height="100%"
+                    playing={true}
+                    loop={true}
+                    className={styles.videoCardImg}
+                /> */}
             </div>
             <div className={styles.title}>
                 {`${videoDetails.videoTitle.substring(0, 70)}...`}

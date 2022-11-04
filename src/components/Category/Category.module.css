@@ -6,11 +6,11 @@
     scrollbar-width: none;
     position: fixed;
     margin-top: 42px;
-    height: 33px;
+    height: 43px;
     width: 400px;
     background-color: white;
     z-index: 1;
-    padding-top: 2px;
+    padding-top: 3px;
     /* padding: 0px 10px; */
 }
 
@@ -21,14 +21,13 @@
 .categoryList {
     height: 21px;
     margin: 5px;
-    margin-top: 7px;
 }
 
 .categoryList p {
     margin: auto;
-    padding: 3px 12px;
+    padding: 5px 15px;
     text-transform: capitalize;
-    font-size: 10px;
+    font-size: 18px;
     width: auto;
     text-decoration: none;
 }

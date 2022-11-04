@@ -9,6 +9,9 @@ import Account from '../Account/Account';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import PopupModal from '../PopupModal/PopupModal';
+import ReactPlayer from "react-player";
+
+
 
 function Home() {
   const [PopupModal, setPopupModal] = useState(false)
@@ -23,6 +26,7 @@ function Home() {
   const allData = [
     {
       video: require('../../assets/Image/bgimage.jpg'),
+      url: 'https://drive.google.com/uc?id=1MK6BPFJmV6iC3hE5mWAP-2x8DIqJiHF1&export=download',
       videoTime: 12.25,
       channelImage: require('../../assets/Image/ronak.jpg'),
       videoTitle: 'title of video Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
@@ -33,6 +37,7 @@ function Home() {
     },
     {
       video: require('../../assets/Image/bgimage1.jpg'),
+      url: 'https://drive.google.com/uc?id=1_6XOtS4vT5RUhcn12iHPbiF05Yc82P-W&export=download',
       videoTime: 10.51,
       channelImage: require('../../assets/Image/krupal.png'),
       videoTitle: 'ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
@@ -43,6 +48,7 @@ function Home() {
     },
     {
       video: require('../../assets/Image/whatsappweb.jpg'),
+      url: 'https://drive.google.com/uc?id=1bMeRCw-oAr4hKOybUyrXrhINEW0dno0X&export=download',
       videoTime: 5.43,
       channelImage: require('../../assets/Image/noman.jpg'),
       videoTitle: 'adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
@@ -105,7 +111,7 @@ function Home() {
                 </div>
                 <div className={styles.detail}>
                   <div className={styles.title}>
-                  {`${item.videoTitle.substring(0, 70)}...`}
+                    {`${item.videoTitle.substring(0, 70)}...`}
                   </div>
                   <div className={styles.channel}>
                     {item.channelName} <span><BsDot className={styles.oneDot} /></span> {item.videoView} views <span><BsDot className={styles.oneDot} /></span> {item.videoLaunch}
@@ -113,7 +119,7 @@ function Home() {
 
                 </div>
                 <div className={styles.dot}>
-                  <HiOutlineDotsVertical 
+                  <HiOutlineDotsVertical
                   // onClick={() => {
                   //   setPopupModal(!PopupModal)
                   // }} 
