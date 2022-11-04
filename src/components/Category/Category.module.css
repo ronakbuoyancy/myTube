@@ -25,9 +25,9 @@
 
 .categoryList p {
     margin: auto;
-    padding: 5px 15px;
+    padding: 7px 15px;
     text-transform: capitalize;
-    font-size: 18px;
+    font-size: 15px;
     width: auto;
     text-decoration: none;
 }
@@ -40,7 +40,7 @@
     width: auto;
     text-decoration: none;
     color: white;
-    background-color: grey;
+    background-color: #606060;
     border-radius: 6px;
     display: flex;
     text-transform: capitalize;

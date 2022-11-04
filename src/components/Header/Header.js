@@ -5,6 +5,7 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 import { IoIosSearch, IoMdMic, IoLogoYoutube } from "react-icons/io";
 import { MdArrowBack } from "react-icons/md";
 import { useLocation, useNavigate } from 'react-router-dom';
+import '../../assets/Font/Teko/Teko-Regular.ttf'
 
 
 function Header({ setAccountModal }) {

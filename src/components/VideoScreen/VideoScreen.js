@@ -9,7 +9,6 @@ import { MdNotInterested, MdClose } from "react-icons/md";
 import { BsClock } from "react-icons/bs";
 import ReactPlayer from "react-player";
 
-
 function VideoScreen() {
     const location = useLocation()
     const videoDetails = location.state.selecteditem

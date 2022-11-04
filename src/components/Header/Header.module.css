@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Teko";
+    src: local("Teko"),
+        url("../../assets/Font/Teko/Teko-Regular.ttf") format("truetype");
+}
 .searchModal {
     display: flex;
     width: 400px;
@@ -83,6 +88,7 @@
     padding: 10px;
     padding-left: 10px;
     align-items: center;
+    font-family: Teko;
 }
 
 .videoScreenTitle {
@@ -91,6 +97,7 @@
     padding: 10px;
     padding-left: 10px;
     align-items: center;
+    font-family: Teko;
 }
 
 .videoScreenTitle p {
