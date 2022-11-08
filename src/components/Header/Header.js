@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import styles from './Header.module.css'
 import { SiBbciplayer } from "react-icons/si";
 import { HiOutlineDotsVertical } from "react-icons/hi";
-import { IoIosSearch, IoMdMic, IoLogoYoutube } from "react-icons/io";
+import { IoIosSearch, IoMdMic} from "react-icons/io";
 import { MdArrowBack } from "react-icons/md";
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../../assets/Font/Teko/Teko-Regular.ttf'
 
 
-function Header({ setAccountModal }) {
+function Header({ setAccountModal, channel }) {
     const [searchModal, setSearchModal] = useState(false)
     const location = useLocation()
     const navigate = useNavigate()
@@ -31,19 +31,20 @@ function Header({ setAccountModal }) {
                         className={location.pathname === '/videoscreen' ?
                             styles.videoScreenTitle : styles.headerTitle}>
                         <SiBbciplayer className={styles.icon} />
-                        <p>MyTube</p>
+                        {location.pathname === '/channel' ?
+                            <p style={{ fontFamily: 'Roboto', fontSize: '15px', marginLeft: "10px" }}>{channel.channelName}</p> :
+                            <p>MyTube</p>}
                     </div>
                     <div className={styles.headerSearch}>
                         <IoIosSearch className={location.pathname === '/videoscreen' ?
                             styles.videoScreensearchicon : styles.searchicon}
                             onClick={() => setSearchModal(true)} />
-                        {location.pathname === '/videoscreen' ?
-                            <HiOutlineDotsVertical style={{
-                                color: 'white', fontSize: "20px"
-                            }} /> :
+                        {location.pathname === '/' ?
                             <div className={styles.user} onClick={() => setAccountModal(true)}>
                                 <img src={require('../../assets/Image/jigar.jpg')} />
-                            </div>}
+                            </div> : <HiOutlineDotsVertical
+                                style={{ color: location.pathname === '/videoscreen' ? 'white' : 'black', fontSize: "20px" }} />
+                        }
                     </div>
                 </div>
             }

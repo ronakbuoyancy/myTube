@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import Category from '../Category/Category'
 import Header from '../Header/Header'
 import styles from './VideoScreen.module.css'
@@ -6,17 +6,20 @@ import { useLocation } from 'react-router-dom';
 import { BsDot, BsClock } from "react-icons/bs";
 import PopupModal from '../PopupModal/PopupModal';
 import { MdNotInterested, MdClose } from "react-icons/md";
-import { BiLike, BiDislike } from "react-icons/bi";
 import { RiShareForwardLine, RiFlagLine } from "react-icons/ri";
 import { FiPlusSquare } from "react-icons/fi";
 import { AiOutlineLike, AiFillLike, AiOutlineDislike, AiFillDislike } from "react-icons/ai";
 import ReactPlayer from "react-player";
+import { useNavigate } from 'react-router-dom';
+
 
 function VideoScreen() {
     const location = useLocation()
+    const navigate = useNavigate()
     const videoDetails = location.state.selecteditem
     const [isLike, setIsLike] = useState(false)
     const [isDisLike, setIsDisLike] = useState(false)
+
     const videoRef = useRef()
     // const [PopupModal, setPopupModal] = useState(false)
 
@@ -43,7 +46,7 @@ function VideoScreen() {
             {/* <Category /> */}
 
             <div className={styles.video}>
-                {/* <img src={videoDetails.video} /> */}
+                {/* <img src={videoDetails.thumbnail} /> */}
                 <div className={styles.playerWrapper}>
 
                     <ReactPlayer
@@ -58,7 +61,6 @@ function VideoScreen() {
             </div>
             <div className={styles.title}>
                 {`${videoDetails.videoTitle.substring(0, 70)}...`}
-
             </div>
             <div className={styles.channel}>
                 {videoDetails.videoView} views
@@ -67,12 +69,17 @@ function VideoScreen() {
                 <span>...more</span>
             </div>
             <div className={styles.videoDetails}>
-                <div className={styles.videoDetailsChannel}>
+                <div className={styles.videoDetailsChannel}
+                    onClick={() => {
+                        navigate('/channel', { state: { channelDetails: videoDetails } })
+                    }}
+                // navigate('/videoscreen', { state: { selecteditem: item } })
+                >
                     <div className={styles.image}>
                         <img src={videoDetails.channelImage}></img>
                     </div>
                     <p>{videoDetails.channelName}</p>
-                    <p>1.16M</p>
+                    <p>{videoDetails.subscribers}</p>
                 </div>
                 <div>
                     <p className={styles.subscribe}>subscribe</p>

@@ -38,7 +38,8 @@ function Account({ setAccountModal }) {
                 </div>
                 <div className={styles.youtubeRow}>
                     <MdLogout />
-                    <p onClick={() => navigate('/login')}>log out</p>
+                    <p style={{ color: 'black' }}
+                        onClick={() => navigate('/login')}>log out</p>
                 </div>
             </div>
             <div style={{ marginTop: '10px' }}>
