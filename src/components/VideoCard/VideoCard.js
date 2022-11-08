@@ -5,14 +5,20 @@ import { BsDot } from "react-icons/bs";
 import { useNavigate, Link } from 'react-router-dom';
 import ReactPlayer from "react-player";
 import { useState, useRef } from 'react';
+import { useInView } from 'react-intersection-observer';
+import { InView } from "react-intersection-observer";
+
 
 function VideoCard({ item, index }) {
     const navigate = useNavigate()
+    const [View, setView] = useState(false);
     const [seekTime, setSeekTime] = useState(0)
+
     return (
         <div className={styles.videoCard} key={index}>
             <div className={styles.videoScreen}>
-                <div className={styles.video}>
+                <div className={styles.video}
+                >
                     {/* <img src={item.thumbnail}
                         onClick={() =>
                             navigate('/videoscreen', { state: { selecteditem: item } })}>
@@ -23,6 +29,8 @@ function VideoCard({ item, index }) {
                         playing={true}
                         width="100%"
                         height="100%"
+                        onClick={() =>
+                            navigate('/videoscreen', { state: { selecteditem: item } })}
                     />
                     <span>{item.videoTime}</span>
                 </div>

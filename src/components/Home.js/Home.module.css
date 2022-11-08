@@ -23,3 +23,12 @@
     color: white;
     border: none;
 }
+
+.inscreen {
+    border: 1px solid red;
+    width: 400px;
+    height: 204px;
+    z-index: 99;
+    margin-top: 20px;
+    position: fixed;
+}

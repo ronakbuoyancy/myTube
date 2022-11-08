@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './Home.module.css'
 import { MdNotInterested, MdClose } from "react-icons/md";
 import { BsClock } from "react-icons/bs";
@@ -10,16 +10,31 @@ import Footer from '../Footer/Footer';
 import PopupModal from '../PopupModal/PopupModal';
 import ReactPlayer from "react-player";
 import VideoCard from '../VideoCard/VideoCard';
-
-
+import { useMemo } from 'react';
+import Videoport from '../Videoport';
 
 function Home() {
   const [PopupModal, setPopupModal] = useState(false)
+  const [searchModal, setSearchModal] = useState(false)
   const [categoryName, setCategoryName] = useState()
   const [activeCategory, setactiveCategory] = useState('all')
   const [filterData, setFilterData] = useState()
   const [accountModal, setAccountModal] = useState(false)
+  const [findCategory, setFindCategory] = useState()
   const navigate = useNavigate()
+  // const [scrollPosition, setScrollPosition] = useState(0);
+  // const handleScroll = () => {
+  //   const position = window.pageYOffset;
+  //   setScrollPosition(position);
+  //   console.log(position);
+  // };
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll, { passive: true });
+
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, []);
   useEffect(() => {
     filterDataHandler()
   }, [categoryName])
@@ -130,10 +145,39 @@ function Home() {
       icon: BsClock
     },
   ]
+  const findDataHandler = () => {
+    if (findCategory) {
+      const new2 = allData.filter((item) => (item.categoryType === findCategory))
+      setFilterData(new2)
+      console.log({ new2 });
+
+      setactiveCategory(categoryName)
+      if (findCategory === 'all') {
+        setFilterData(allData)
+        setactiveCategory(categoryName)
+      }
+    }
+    else {
+      setFilterData(allData)
+    }
+  }
+  const handleKeyDown = (e) => {
+    if (!findCategory) {
+    }
+    else {
+      if (e.key === 'Enter') {
+        setFindCategory(findCategory)
+        findDataHandler()
+        setSearchModal(false)
+      }
+    }
+  }
   const filterDataHandler = () => {
     if (categoryName) {
       const new2 = allData.filter((item) => (item.categoryType === categoryName))
       setFilterData(new2)
+      console.log({ new2 });
+
       setactiveCategory(categoryName)
       if (categoryName === 'all') {
         setFilterData(allData)
@@ -144,16 +188,32 @@ function Home() {
       setFilterData(allData)
     }
   }
+  // const targerRef = useRef(null)
+  // const View = Videoport({
+  //   root: null,
+  //   rootMargin: '0px',
+  //   threshold: 0.3
+  // }, targerRef);
+
   return (
-    <div>{
+    <div >{
       accountModal ? <Account
         setAccountModal={setAccountModal} /> : <>
         <Header
-          setAccountModal={setAccountModal} />
+          setAccountModal={setAccountModal}
+          setFindCategory={setFindCategory}
+          handleKeyDown={handleKeyDown}
+          searchModal={searchModal}
+          setSearchModal={setSearchModal} />
         <Category
           setCategoryName={setCategoryName}
           activeCategory={activeCategory} />
         <div className={styles.videoContainer}>
+          {/* <div className={styles.inscreen} style={{ backgroundColor: View ? 'red' : 'green' }}>
+
+          </div>
+          <div style={{ height: "100vh" }}></div>
+          <h1 ref={targerRef}>enter in view</h1> */}
           {filterData?.map((item, index) => (
             <VideoCard
               item={item}
@@ -169,7 +229,13 @@ function Home() {
         <Footer />
       </>}
 
-    </div>
+    </div >
+    // <div>
+    //   <div className={styles.inscreen} style={{ backgroundColor: View ? 'red' : 'green' }}>
+    //   </div>
+    //   <div style={{ height: "100vh" }}></div>
+    //   <h1 ref={targerRef}>enter in view</h1>
+    // </div>
   )
 }
 

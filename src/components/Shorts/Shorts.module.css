@@ -17,12 +17,11 @@
     z-index: 2;
     font-size: 28px;
     color: white;
-    border: 1px solid black;
 }
 
 .title {
     position: absolute;
-    bottom: 75px;
+    bottom: 135px;
     text-align: left;
     margin: 0px 15px;
     color: white;
@@ -33,7 +32,7 @@
 .channelDetails {
     display: flex;
     position: absolute;
-    bottom: 15px;
+    bottom: 75px;
     text-align: left;
     margin: 0px 15px;
     color: white;
