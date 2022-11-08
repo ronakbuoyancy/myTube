@@ -4,7 +4,6 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 import { BsDot } from "react-icons/bs";
 import { useNavigate, Link } from 'react-router-dom';
 import ReactPlayer from "react-player";
-import handleViewport from 'react-in-viewport';
 import { useState, useRef } from 'react';
 
 function VideoCard({ item, index }) {
@@ -18,13 +17,12 @@ function VideoCard({ item, index }) {
                         onClick={() =>
                             navigate('/videoscreen', { state: { selecteditem: item } })}>
                     </img> */}
-                    <ViewportItem
-                        item={item}
-                        navigate={navigate}
-                        seekTime={seekTime}
-                        setSeekTime={setSeekTime}
-                        onEnterViewport={() => console.log("[debug]: enter in viewport.")}
-                        onLeaveViewport={() => console.log("[debug]: leave viewport.")}
+                    <ReactPlayer
+                        url={item.url}
+                        className='ReactPlayer'
+                        playing={true}
+                        width="100%"
+                        height="100%"
                     />
                     <span>{item.videoTime}</span>
                 </div>
@@ -57,41 +55,3 @@ function VideoCard({ item, index }) {
 
 export default VideoCard;
 
-const Item = ({
-    inViewport,
-    innerRef,
-    item,
-    seekTime,
-    setSeekTime,
-}) => {
-    const videoRef = useRef();
-    // console.log({ inViewport });
-    return (
-        <Link
-            to={'/videoscreen'}
-            state={{ selecteditem: item, seekTime: seekTime }}
-            style={{ textDecoration: 'none' }}
-        >
-            <div
-                ref={innerRef}
-                className={styles.Video_Card}
-                style={{ position: "relative" }}
-            >
-                <ReactPlayer
-                    ref={videoRef}
-                    url={item?.url}
-                    width="100%"
-                    height="100%"
-                    playing={inViewport && true}
-                    loop={true}
-                    style={{ maxHeight: '220px', overflow: 'hidden' }}
-                    onProgress={(time) => setSeekTime(time.playedSeconds)}
-                    onDuration={(duration) => 
-                        console.log({ duration })}
-                />
-
-            </div>
-        </Link>
-    );
-};
-const ViewportItem = handleViewport(Item /* options: {}, config: {} */);

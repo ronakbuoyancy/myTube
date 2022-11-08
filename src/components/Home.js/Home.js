@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Home.module.css'
 import { MdNotInterested, MdClose } from "react-icons/md";
-import { BsClock} from "react-icons/bs";
+import { BsClock } from "react-icons/bs";
 import Header from '../Header/Header';
 import Category from '../Category/Category';
 import Account from '../Account/Account';
@@ -34,21 +34,34 @@ function Home() {
       channelName: 'buoyancy',
       videoView: '28k',
       videoLaunch: '1 month ago',
-      categoryType: 'gaming',
+      categoryType: 'movie',
       subscribers: '34.2M'
     },
     {
       thumbnail: require('../../assets/Image/video2.jpg'),
-      url: 'https://drive.google.com/uc?id=1_6XOtS4vT5RUhcn12iHPbiF05Yc82P-W&export=download',
+      url: 'https://drive.google.com/uc?id=11LcWF7f9iFTDdops5tpM4U0EfMa-NtDO&export=download',
       videoTime: 10.51,
       channelImage: require('../../assets/Image/krupal.png'),
       coverImage: require('../../assets/Image/bgimage1.jpg'),
-      videoTitle: 'ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
+      videoTitle: 'consectetur adipisicing elit. ipsum dolor sit amet Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
       channelName: 'ITC',
-      videoView: '18k',
-      videoLaunch: '5 month ago',
+      videoView: '12k',
+      videoLaunch: '3 month ago',
       categoryType: 'music',
       subscribers: '14M'
+    },
+    {
+      thumbnail: require('../../assets/Image/video1.jpg'),
+      url: ' https://drive.google.com/uc?id=1ZoZhN53xYEPNdM4oNglJdnwD3TikXDNI&export=download',
+      videoTime: 2.25,
+      channelImage: require('../../assets/Image/ronak.jpg'),
+      coverImage: require('../../assets/Image/bgimage.jpg'),
+      videoTitle: 'ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
+      channelName: 'buoyancy',
+      videoView: '13k',
+      videoLaunch: '6 day ago',
+      categoryType: 'gaming',
+      subscribers: '34.2M'
     },
     {
       thumbnail: require('../../assets/Image/video3.jpg'),
@@ -65,15 +78,15 @@ function Home() {
     },
     {
       thumbnail: require('../../assets/Image/video1.jpg'),
-      url: 'https://drive.google.com/uc?id=1MK6BPFJmV6iC3hE5mWAP-2x8DIqJiHF1&export=download',
-      videoTime: 12.25,
+      url: 'https://drive.google.com/uc?id=143LgiKUSav2GnhfAvk3V6RX_JC3-6bce&export=download',
+      videoTime: 5.25,
       channelImage: require('../../assets/Image/ronak.jpg'),
       coverImage: require('../../assets/Image/bgimage.jpg'),
-      videoTitle: 'title of video Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
+      videoTitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
       channelName: 'buoyancy',
-      videoView: '28k',
-      videoLaunch: '1 month ago',
-      categoryType: 'gaming',
+      videoView: '20k',
+      videoLaunch: '1.5 month ago',
+      categoryType: 'music',
       subscribers: '34.2M'
     },
     {
@@ -86,20 +99,20 @@ function Home() {
       channelName: 'ITC',
       videoView: '18k',
       videoLaunch: '5 month ago',
-      categoryType: 'music',
+      categoryType: 'movie',
       subscribers: '14M'
     },
     {
       thumbnail: require('../../assets/Image/video3.jpg'),
-      url: 'https://drive.google.com/uc?id=1bMeRCw-oAr4hKOybUyrXrhINEW0dno0X&export=download',
+      url: 'https://drive.google.com/uc?id=1ks3vMQwKz5P2TSs2rOKRUrkmWQXIcxGN&export=download',
       videoTime: 5.43,
       channelImage: require('../../assets/Image/noman.jpg'),
       coverImage: require('../../assets/Image/whatsappweb.jpg'),
       videoTitle: 'adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
       channelName: 'noman',
-      videoView: '8k',
-      videoLaunch: '2 month ago',
-      categoryType: 'movie',
+      videoView: '2.8k',
+      videoLaunch: '4 month ago',
+      categoryType: 'gaming',
       subscribers: '8.5M'
     },
   ]

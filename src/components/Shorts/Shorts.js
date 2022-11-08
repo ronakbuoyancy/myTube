@@ -112,7 +112,7 @@ function Shorts() {
                 showIndicators={false}
                 showArrows={false}>
                 {allData.map((item, index) => (
-                    <div key={index}>
+                    <div key={index} style={{ width: '400px', height: '100vh' }}>
                         <video width="400px" height="100%" autoPlay>
                             <source src={item.url} type="video/mp4" />
                         </video>
@@ -129,9 +129,9 @@ function Shorts() {
                         </div>
                         <div className={styles.channelDetails}>
                             <div className={styles.channelimg}>
-                                <img src={item.thumbnail} />
+                                <img src={item.channelImage} />
                             </div>
-                            <p>  {`${item.channelName.substring(0, 20)}...`} </p>
+                            <p onClick={() => navigate('/channel', { state: { channelDetails: item } })}>{item.channelName} </p>
                             <p className={styles.subscribed}>Subscribed</p>
                         </div>
                     </div>

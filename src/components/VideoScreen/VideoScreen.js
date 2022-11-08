@@ -48,7 +48,6 @@ function VideoScreen() {
             <div className={styles.video}>
                 {/* <img src={videoDetails.thumbnail} /> */}
                 <div className={styles.playerWrapper}>
-
                     <ReactPlayer
                         url={videoDetails.url}
                         className='ReactPlayer'
