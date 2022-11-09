@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import '../../assets/Font/Teko/Teko-Regular.ttf'
 
 
-function Header({ setAccountModal, channel, setFindCategory, handleKeyDown, searchModal, setSearchModal, findCategory }) {
+function Header({ setAccountModal, channel, setFindCategory, handleKeyDown, searchModal, setSearchModal, findCategory, setFilterData,allData }) {
     // const [findCategory, setFindCategory] = useState()
     const location = useLocation()
     const navigate = useNavigate()
@@ -37,7 +37,11 @@ function Header({ setAccountModal, channel, setFindCategory, handleKeyDown, sear
                     <div onClick={() => navigate('/')}
                         className={location.pathname === '/videoscreen' ?
                             styles.videoScreenTitle : styles.headerTitle}>
-                        <SiBbciplayer className={styles.icon} onClick={() => navigate('/')} />
+                        <SiBbciplayer className={styles.icon}
+                            onClick={() => {
+                                setFindCategory('')
+                                setFilterData(allData)
+                            }} />
                         {location.pathname === '/channel' ?
                             <p style={{ fontFamily: 'Roboto', fontSize: '15px', marginLeft: "10px" }}>{channel.channelName}</p> :
                             findCategory ? <p style={{ fontFamily: 'Roboto', fontSize: '15px', marginLeft: "10px" }}>{findCategory}</p> :

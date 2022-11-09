@@ -3,7 +3,8 @@ import { SiBbciplayer } from "react-icons/si";
 import styles from './Signup.module.css'
 import { useNavigate } from 'react-router-dom';
 import '../../assets/Font/Teko/Teko-Regular.ttf'
-
+import { ToastContainer, toast, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Signup() {
     const navigate = useNavigate()
@@ -22,6 +23,35 @@ function Signup() {
                 [name]: value
             }
         })
+    }
+    const submitHandler = () => {
+        if (data.email !== '' && data.password !== '' && data.confimePassword === data.password && checked) {
+            toast.success('Edit Profile Successfully Done', {
+                position: "top-center",
+                toastId: 'Success1',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            setTimeout(() => {
+                navigate('/')
+            }, 2000);
+        }
+        else {
+            toast.error('Please enter a valid data', {
+                position: "top-center",
+                toastId: 'error1',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
     }
     return (
         <div className={styles.Signup}>
@@ -67,8 +97,19 @@ function Signup() {
                 <p> I agree to our Terms , Privacy Policy and Cookies Policy.</p>
             </div>
             <div className={styles.btn}>
-                <button onClick={() => navigate('/')}>Sign up</button>
+                <button onClick={() => submitHandler()}>Sign up</button>
             </div>
+            <ToastContainer transition={Zoom}
+                position="top-center"
+                autoClose={1000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </div>
     )
 }

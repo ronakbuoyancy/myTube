@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.5595b7d0.css",
-    "main.js": "/static/js/main.c882f3ea.js",
+    "main.css": "/static/css/main.c20f79f7.css",
+    "main.js": "/static/js/main.a229fa4f.js",
     "static/media/video2.jpg": "/static/media/video2.93f80381cdf8430f6352.jpg",
     "static/media/bgimage1.jpg": "/static/media/bgimage1.93ffb1bfc9588fa43726.jpg",
     "static/media/Teko-Regular.ttf": "/static/media/Teko-Regular.3419209fb7c5d9f70ce3.ttf",
@@ -9,15 +9,14 @@
     "static/media/video1.jpg": "/static/media/video1.03c57889d00bf6282fa4.jpg",
     "static/media/jigar.jpg": "/static/media/jigar.97e755b2f411515af579.jpg",
     "static/media/ronak.jpg": "/static/media/ronak.448b4fe80fede613d268.jpg",
-    "static/media/profile.png": "/static/media/profile.77349eb5c7014b2d7109.png",
     "static/media/bgimage.jpg": "/static/media/bgimage.0ce004319e90dc4221ec.jpg",
     "static/media/krupal.png": "/static/media/krupal.3c37dddbf5efbef3689d.png",
     "index.html": "/index.html",
-    "main.5595b7d0.css.map": "/static/css/main.5595b7d0.css.map",
-    "main.c882f3ea.js.map": "/static/js/main.c882f3ea.js.map"
+    "main.c20f79f7.css.map": "/static/css/main.c20f79f7.css.map",
+    "main.a229fa4f.js.map": "/static/js/main.a229fa4f.js.map"
   },
   "entrypoints": [
-    "static/css/main.5595b7d0.css",
-    "static/js/main.c882f3ea.js"
+    "static/css/main.c20f79f7.css",
+    "static/js/main.a229fa4f.js"
   ]
 }

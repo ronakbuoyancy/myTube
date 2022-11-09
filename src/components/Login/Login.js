@@ -3,6 +3,8 @@ import { SiBbciplayer } from "react-icons/si";
 import styles from './Login.module.css'
 import { useNavigate } from 'react-router-dom';
 import '../../assets/Font/Teko/Teko-Regular.ttf'
+import { ToastContainer, toast, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Login() {
@@ -21,6 +23,36 @@ function Login() {
             }
         })
     }
+    const submitHandler = () => {
+        if (data.email !== '' && data.password !== '') {
+            toast.success('Edit Profile Successfully Done', {
+                position: "top-center",
+                toastId: 'Success1',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            setTimeout(() => {
+                navigate('/')
+            }, 2000);
+        }
+        else {
+            toast.error('Please enter a valid data', {
+                position: "top-center",
+                toastId: 'error1',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+    }
+
     return (
         <div className={styles.login}>
             <div className={styles.title}>
@@ -53,8 +85,19 @@ function Login() {
                 <p>Don't have an account? <span onClick={() => navigate('/signup')}>Sign up</span></p>
             </div>
             <div className={styles.btn}>
-                <button onClick={() => navigate('/')}>Log in</button>
+                <button onClick={() => submitHandler()}>Log in</button>
             </div>
+            <ToastContainer transition={Zoom}
+                position="top-center"
+                autoClose={1000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </div>
     )
 }

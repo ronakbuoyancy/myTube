@@ -205,7 +205,9 @@ function Home() {
           setFindCategory={setFindCategory}
           handleKeyDown={handleKeyDown}
           searchModal={searchModal}
-          setSearchModal={setSearchModal} />
+          setSearchModal={setSearchModal}
+          setFilterData={setFilterData}
+          allData={allData} />
         <Category
           setCategoryName={setCategoryName}
           activeCategory={activeCategory} />
