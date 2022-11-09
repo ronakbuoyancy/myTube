@@ -201,6 +201,7 @@ function Home() {
         setAccountModal={setAccountModal} /> : <>
         <Header
           setAccountModal={setAccountModal}
+          findCategory={findCategory}
           setFindCategory={setFindCategory}
           handleKeyDown={handleKeyDown}
           searchModal={searchModal}

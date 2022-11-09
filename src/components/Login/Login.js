@@ -28,18 +28,26 @@ function Login() {
                 <p>MyTube</p>
             </div>
             <div className={styles.inputContainer}>
-                <input
-                    type='text'
-                    value={data.email}
-                    name="email"
-                    onChange={inputEventHandler}
-                    placeholder='Enter Your Email' />
-                <input
-                    type='password'
-                    value={data.password}
-                    name="password"
-                    onChange={inputEventHandler}
-                    placeholder='Enter Your Password' />
+                <div className={styles.form}>
+                    <input
+                        type='text'
+                        value={data.email}
+                        name="email"
+                        onChange={inputEventHandler}
+                        className={styles.form__input} autocomplete="off"
+                        placeholder=" " />
+                    <label className={styles.form__label}>email</label>
+                </div>
+                <div className={styles.form}>
+                    <input
+                        type='password'
+                        value={data.password}
+                        name="password"
+                        onChange={inputEventHandler}
+                        className={styles.form__input} autocomplete="off"
+                        placeholder=" " />
+                    <label className={styles.form__label}>password</label>
+                </div>
             </div>
             <div className={styles.signup}>
                 <p>Don't have an account? <span onClick={() => navigate('/signup')}>Sign up</span></p>

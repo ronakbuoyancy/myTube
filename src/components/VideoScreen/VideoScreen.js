@@ -19,6 +19,7 @@ function VideoScreen() {
     const videoDetails = location.state.selecteditem
     const [isLike, setIsLike] = useState(false)
     const [isDisLike, setIsDisLike] = useState(false)
+    const [searchModal, setSearchModal] = useState(false)
 
     const videoRef = useRef()
     // const [PopupModal, setPopupModal] = useState(false)
@@ -41,6 +42,8 @@ function VideoScreen() {
     return (
         <div>
             <Header
+                searchModal={searchModal}
+                setSearchModal={setSearchModal}
             // setPopupModal={setPopupModal}
             />
             {/* <Category /> */}

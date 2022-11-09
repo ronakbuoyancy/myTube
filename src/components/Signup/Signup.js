@@ -30,25 +30,36 @@ function Signup() {
                 <p>MyTube</p>
             </div>
             <div className={styles.inputContainer}>
-                <input
-                    type='text'
-                    value={data.email}
-                    name="email"
-                    onChange={inputEventHandler}
-                    placeholder='Enter Your Email' />
-                <input
-                    type='password'
-                    value={data.password}
-                    name="password"
-                    onChange={inputEventHandler}
-                    placeholder='Enter Your Password' />
-                <input
-                    type='password'
-                    value={data.confimePassword}
-                    name="confimePassword"
-                    onChange={inputEventHandler}
-                    placeholder='Confime Password' />
-
+                <div className={styles.form}>
+                    <input
+                        type='text'
+                        value={data.email}
+                        name="email"
+                        onChange={inputEventHandler}
+                        className={styles.form__input} autocomplete="off"
+                        placeholder=" " />
+                    <label className={styles.form__label}>email</label>
+                </div>
+                <div className={styles.form}>
+                    <input
+                        type='password'
+                        value={data.password}
+                        name="password"
+                        onChange={inputEventHandler}
+                        className={styles.form__input} autocomplete="off"
+                        placeholder=" " />
+                    <label className={styles.form__label}>password</label>
+                </div>
+                <div className={styles.form}>
+                    <input
+                        type='password'
+                        value={data.confimePassword}
+                        name="confimePassword"
+                        onChange={inputEventHandler}
+                        className={styles.form__input} autocomplete="off"
+                        placeholder=" " />
+                    <label className={styles.form__label}>confime password</label>
+                </div>
             </div>
             <div className={styles.checkbox}>
                 <input type="checkbox" defaultChecked={checked}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Channel.module.css'
 import { useLocation } from 'react-router-dom'
 import Header from '../Header/Header'
@@ -8,11 +8,13 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 function Channel() {
     const location = useLocation()
     const channel = location.state.channelDetails
-    console.log({ channel });
+    const [searchModal, setSearchModal] = useState(false)
     return (
         <div>
             <Header
                 channel={channel}
+                searchModal={searchModal}
+                setSearchModal={setSearchModal}
             />
             <div style={{ position: 'relative' }}>
                 <div className={styles.coverImage}>
