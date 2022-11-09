@@ -161,42 +161,38 @@ function EditProfileModal({ setEditProfileModal }) {
                         </div>
                     </div>
                     : <>
-                        <div style={{ width: '400px', position: 'fixed' }}>
-                            <div className={styles.profilePic}>
-                                {userData.profile === '' ?
-                                    <Avatar name={userData.userName}
-                                        className={styles.avatar} /> :
-                                    <img src={userData.profile} />}
-                            </div>
-                            <p className={styles.profileText}
-                                onClick={attachIconclick}>
-                                Change profile photo</p>
-                            <input type='file' id='file' ref={inputFile}
-                                onChange={handleChange}
-                                style={{ display: 'none' }} />
+                        <div className={styles.profilePic}>
+                            {userData.profile === '' ?
+                                <Avatar name={userData.userName}
+                                    className={styles.avatar} /> :
+                                <img src={userData.profile} />}
                         </div>
-                        <div style={{ width: '400px', position: 'fixed', marginTop: "200px" }} >
-                            <div className={styles.form}>
-                                <input type="text"
-                                    value={userData.email}
-                                    name='email'
-                                    onChange={inputEventHandler}
-                                    className={styles.form__input} autocomplete="off" placeholder=" " />
-                                <label htmlFor="email" className={styles.form__label}>email</label>
-                            </div>
-                            <div className={styles.form}>
-                                <input type="text"
-                                    value={userData.userName}
-                                    name='userName'
-                                    onChange={inputEventHandler}
-                                    className={styles.form__input} autocomplete="off" placeholder=" " />
-                                <label htmlFor="email" className={styles.form__label}>user Name</label>
-                            </div>
-                            <div className={styles.changePassword} >
-                                <p onClick={() => setPasswordChangeModal(true)}>
-                                    Change password ?
-                                </p>
-                            </div>
+                        <p className={styles.profileText}
+                            onClick={attachIconclick}>
+                            Change profile photo</p>
+                        <input type='file' id='file' ref={inputFile}
+                            onChange={handleChange}
+                            style={{ display: 'none' }} />
+                        <div className={styles.form}>
+                            <input type="text"
+                                value={userData.email}
+                                name='email'
+                                onChange={inputEventHandler}
+                                className={styles.form__input} autocomplete="off" placeholder=" " />
+                            <label htmlFor="email" className={styles.form__label}>email</label>
+                        </div>
+                        <div className={styles.form}>
+                            <input type="text"
+                                value={userData.userName}
+                                name='userName'
+                                onChange={inputEventHandler}
+                                className={styles.form__input} autocomplete="off" placeholder=" " />
+                            <label htmlFor="email" className={styles.form__label}>user Name</label>
+                        </div>
+                        <div className={styles.changePassword} >
+                            <p onClick={() => setPasswordChangeModal(true)}>
+                                Change password ?
+                            </p>
                         </div>
                     </>
             }

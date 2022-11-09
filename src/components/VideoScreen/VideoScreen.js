@@ -62,7 +62,8 @@ function VideoScreen() {
                 </div>
             </div>
             <div className={styles.title}>
-                {`${videoDetails.videoTitle.substring(0, 70)}...`}
+                {videoDetails.videoTitle.length <= 69 ? videoDetails.videoTitle :
+                    `${videoDetails.videoTitle.substring(0, 70)}...`}
             </div>
             <div className={styles.channel}>
                 {videoDetails.videoView} views
@@ -80,7 +81,10 @@ function VideoScreen() {
                     <div className={styles.image}>
                         <img src={videoDetails.channelImage}></img>
                     </div>
-                    <p>{videoDetails.channelName}</p>
+                    <p>
+                        {videoDetails.channelName.length <= 19 ? videoDetails.channelName :
+                            `${videoDetails.channelName.substring(0, 20)}...`}
+                    </p>
                     <p>{videoDetails.subscribers}</p>
                 </div>
                 <div>

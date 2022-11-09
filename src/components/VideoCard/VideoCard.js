@@ -9,7 +9,7 @@ import { useInView } from 'react-intersection-observer';
 import { InView } from "react-intersection-observer";
 
 
-function VideoCard({ item, index }) {
+function VideoCard({ item, index, setIsPopupModal, isPopupModal }) {
     const navigate = useNavigate()
     const [View, setView] = useState(false);
     const [seekTime, setSeekTime] = useState(0)
@@ -34,25 +34,28 @@ function VideoCard({ item, index }) {
                     />
                     <span>{item.videoTime}</span>
                 </div>
-                <div className={styles.videoDetails}
-                    onClick={() => navigate('/videoscreen', { state: { selecteditem: item } })}>
-                    <div className={styles.image}>
-                        <img src={item.channelImage}></img>
-                    </div>
-                    <div className={styles.detail}>
-                        <div className={styles.title}>
-                            {`${item.videoTitle.substring(0, 70)}...`}
+                <div className={styles.videoDetails} >
+                    <div style={{ display: 'flex' }} onClick={() => navigate('/videoscreen', { state: { selecteditem: item } })}>
+                        <div className={styles.image}>
+                            <img src={item.channelImage}></img>
                         </div>
-                        <div className={styles.channel}>
-                            {item.channelName} <span><BsDot className={styles.oneDot} /></span> {item.videoView} views <span><BsDot className={styles.oneDot} /></span> {item.videoLaunch}
-                        </div>
+                        <div className={styles.detail}>
+                            <div className={styles.title}>
+                                {item.videoTitle.length <= 69 ? item.videoTitle :
+                                    `${item.videoTitle.substring(0, 70)}...`}
+                            </div>
+                            <div className={styles.channel}>
+                                {item.channelName.length <= 19 ? item.channelName :
+                                    `${item.channelName.substring(0, 20)}...`}<span><BsDot className={styles.oneDot} /></span> {item.videoView} views <span><BsDot className={styles.oneDot} /></span> {item.videoLaunch}
+                            </div>
 
+                        </div>
                     </div>
                     <div className={styles.dot}>
                         <HiOutlineDotsVertical
-                        // onClick={() => {
-                        //   setPopupModal(!PopupModal)
-                        // }} 
+                            onClick={() => {
+                                setIsPopupModal(!isPopupModal)
+                            }}
                         />
                     </div>
                 </div>

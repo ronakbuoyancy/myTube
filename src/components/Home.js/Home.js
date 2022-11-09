@@ -14,7 +14,7 @@ import { useMemo } from 'react';
 import Videoport from '../Videoport';
 
 function Home() {
-  const [PopupModal, setPopupModal] = useState(false)
+  const [isPopupModal, setIsPopupModal] = useState(false)
   const [searchModal, setSearchModal] = useState(false)
   const [categoryName, setCategoryName] = useState()
   const [activeCategory, setactiveCategory] = useState('all')
@@ -42,7 +42,7 @@ function Home() {
     {
       thumbnail: require('../../assets/Image/video1.jpg'),
       url: 'https://drive.google.com/uc?id=1MK6BPFJmV6iC3hE5mWAP-2x8DIqJiHF1&export=download',
-      videoTime: 12.25,
+      videoTime: 1.22,
       channelImage: require('../../assets/Image/ronak.jpg'),
       coverImage: require('../../assets/Image/bgimage.jpg'),
       videoTitle: 'title of video Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
@@ -55,7 +55,7 @@ function Home() {
     {
       thumbnail: require('../../assets/Image/video2.jpg'),
       url: 'https://drive.google.com/uc?id=11LcWF7f9iFTDdops5tpM4U0EfMa-NtDO&export=download',
-      videoTime: 10.51,
+      videoTime: 1.16,
       channelImage: require('../../assets/Image/krupal.png'),
       coverImage: require('../../assets/Image/bgimage1.jpg'),
       videoTitle: 'consectetur adipisicing elit. ipsum dolor sit amet Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
@@ -68,7 +68,7 @@ function Home() {
     {
       thumbnail: require('../../assets/Image/video1.jpg'),
       url: ' https://drive.google.com/uc?id=1ZoZhN53xYEPNdM4oNglJdnwD3TikXDNI&export=download',
-      videoTime: 2.25,
+      videoTime: 1.08,
       channelImage: require('../../assets/Image/ronak.jpg'),
       coverImage: require('../../assets/Image/bgimage.jpg'),
       videoTitle: 'ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
@@ -81,7 +81,7 @@ function Home() {
     {
       thumbnail: require('../../assets/Image/video3.jpg'),
       url: 'https://drive.google.com/uc?id=1bMeRCw-oAr4hKOybUyrXrhINEW0dno0X&export=download',
-      videoTime: 5.43,
+      videoTime: 1.35,
       channelImage: require('../../assets/Image/noman.jpg'),
       coverImage: require('../../assets/Image/whatsappweb.jpg'),
       videoTitle: 'adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
@@ -94,7 +94,7 @@ function Home() {
     {
       thumbnail: require('../../assets/Image/video1.jpg'),
       url: 'https://drive.google.com/uc?id=143LgiKUSav2GnhfAvk3V6RX_JC3-6bce&export=download',
-      videoTime: 5.25,
+      videoTime: 1.15,
       channelImage: require('../../assets/Image/ronak.jpg'),
       coverImage: require('../../assets/Image/bgimage.jpg'),
       videoTitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
@@ -107,7 +107,7 @@ function Home() {
     {
       thumbnail: require('../../assets/Image/video2.jpg'),
       url: 'https://drive.google.com/uc?id=1_6XOtS4vT5RUhcn12iHPbiF05Yc82P-W&export=download',
-      videoTime: 10.51,
+      videoTime: 2.01,
       channelImage: require('../../assets/Image/krupal.png'),
       coverImage: require('../../assets/Image/bgimage1.jpg'),
       videoTitle: 'ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
@@ -120,7 +120,7 @@ function Home() {
     {
       thumbnail: require('../../assets/Image/video3.jpg'),
       url: 'https://drive.google.com/uc?id=1ks3vMQwKz5P2TSs2rOKRUrkmWQXIcxGN&export=download',
-      videoTime: 5.43,
+      videoTime: '2.00',
       channelImage: require('../../assets/Image/noman.jpg'),
       coverImage: require('../../assets/Image/whatsappweb.jpg'),
       videoTitle: 'adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
@@ -147,7 +147,7 @@ function Home() {
   ]
   const findDataHandler = () => {
     if (findCategory) {
-      const new2 = allData.filter((item) => (item.categoryType === findCategory))
+      const new2 = allData.find((item) => (item.categoryType === findCategory))
       setFilterData(new2)
       console.log({ new2 });
 
@@ -220,13 +220,15 @@ function Home() {
           {filterData?.map((item, index) => (
             <VideoCard
               item={item}
-              index={index} />
+              index={index}
+              setIsPopupModal={setIsPopupModal}
+              isPopupModal={isPopupModal} />
           ))}
 
         </div>
-        {PopupModal &&
+        {isPopupModal &&
           <PopupModal
-            setPopupModal={setPopupModal}
+            setIsPopupModal={setIsPopupModal}
             popupData={popupData} />
         }
         <Footer />

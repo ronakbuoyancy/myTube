@@ -1,13 +1,13 @@
 import React from 'react'
 import styles from './PopupModal.module.css'
 import { FaRegWindowClose } from "react-icons/fa";
-function PopupModal({ setVideoModal, popupData }) {
+function PopupModal({ setVideoModal, popupData,setIsPopupModal }) {
 
     return (
         <div className={styles.videoModal}>
             <div className={styles.closeVideoModal}>
                 <FaRegWindowClose className={styles.closeVideoModalSymbol}
-                    onClick={() => setVideoModal(false)} /></div>
+                    onClick={() => setIsPopupModal(false)} /></div>
             {popupData.map((item,index) => (
                 <div className={styles.videoModalRow} key={index}>
                     <item.icon className={styles.videoModalSymbol} />

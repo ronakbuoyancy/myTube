@@ -80,11 +80,10 @@
 .headerTitle {
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 11px;
     align-items: center;
     font-family: Teko;
-    width: 60%;
-
+    width: 75%;
 }
 
 .videoScreenTitle {
@@ -123,7 +122,7 @@
 .headerSearch {
     display: flex;
     justify-content: space-evenly;
-    width: 40%;
+    width: 25%;
     align-items: center;
 }
 

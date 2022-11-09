@@ -143,14 +143,22 @@ function Shorts() {
                         // }}
                         />
                         <div>
-                            <p className={styles.title}>{`${item.videoTitle.substring(0, 70)}...`}</p>
+                            <p className={styles.title}>
+                                {item.videoTitle.length <= 69 ? item.videoTitle :
+                                    `${item.videoTitle.substring(0, 70)}...`}</p>
                         </div>
                         <div className={styles.channelDetails}>
-                            <div className={styles.channelimg}>
-                                <img src={item.channelImage} />
+                            <div className={styles.firstchannelDetails}>
+                                <div className={styles.channelimg}>
+                                    <img src={item.channelImage} />
+                                </div>
+                                <p onClick={() => navigate('/channel', { state: { channelDetails: item } })}>
+                                    {item.channelName.length <= 19 ? item.channelName :
+                                        `${item.channelName.substring(0, 20)}...`} </p>
                             </div>
-                            <p onClick={() => navigate('/channel', { state: { channelDetails: item } })}>{item.channelName} </p>
-                            <p className={styles.subscribed}>Subscribed</p>
+                            <div className={styles.secondchannelDetails}>
+                                <p className={styles.subscribed}>Subscribed</p>
+                            </div>
                         </div>
                     </div>
                 ))

@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.c20f79f7.css",
-    "main.js": "/static/js/main.a229fa4f.js",
+    "main.css": "/static/css/main.a0707f9f.css",
+    "main.js": "/static/js/main.e7bfb25a.js",
     "static/media/video2.jpg": "/static/media/video2.93f80381cdf8430f6352.jpg",
     "static/media/bgimage1.jpg": "/static/media/bgimage1.93ffb1bfc9588fa43726.jpg",
     "static/media/Teko-Regular.ttf": "/static/media/Teko-Regular.3419209fb7c5d9f70ce3.ttf",
@@ -12,11 +12,11 @@
     "static/media/bgimage.jpg": "/static/media/bgimage.0ce004319e90dc4221ec.jpg",
     "static/media/krupal.png": "/static/media/krupal.3c37dddbf5efbef3689d.png",
     "index.html": "/index.html",
-    "main.c20f79f7.css.map": "/static/css/main.c20f79f7.css.map",
-    "main.a229fa4f.js.map": "/static/js/main.a229fa4f.js.map"
+    "main.a0707f9f.css.map": "/static/css/main.a0707f9f.css.map",
+    "main.e7bfb25a.js.map": "/static/js/main.e7bfb25a.js.map"
   },
   "entrypoints": [
-    "static/css/main.c20f79f7.css",
-    "static/js/main.a229fa4f.js"
+    "static/css/main.a0707f9f.css",
+    "static/js/main.e7bfb25a.js"
   ]
 }
