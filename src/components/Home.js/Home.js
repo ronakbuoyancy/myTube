@@ -21,28 +21,19 @@ function Home() {
   const [filterData, setFilterData] = useState()
   const [accountModal, setAccountModal] = useState(false)
   const [findCategory, setFindCategory] = useState()
+  const [videoTime, setVideoTime] = useState([])
   const navigate = useNavigate()
-  // const [scrollPosition, setScrollPosition] = useState(0);
-  // const handleScroll = () => {
-  //   const position = window.pageYOffset;
-  //   setScrollPosition(position);
-  //   console.log(position);
-  // };
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handleScroll, { passive: true });
-
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, []);
   useEffect(() => {
     filterDataHandler()
   }, [categoryName])
+  console.log();
+  console.log(videoTime);
   const allData = [
     {
+      id: 1,
       thumbnail: require('../../assets/Image/video1.jpg'),
       url: 'https://drive.google.com/uc?id=1MK6BPFJmV6iC3hE5mWAP-2x8DIqJiHF1&export=download',
-      videoTime: 1.22,
+      videoTime: videoTime[0]?.time,
       channelImage: require('../../assets/Image/ronak.jpg'),
       coverImage: require('../../assets/Image/bgimage.jpg'),
       videoTitle: 'title of video Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
@@ -53,9 +44,10 @@ function Home() {
       subscribers: '34.2M'
     },
     {
+      id: 2,
       thumbnail: require('../../assets/Image/video2.jpg'),
       url: 'https://drive.google.com/uc?id=11LcWF7f9iFTDdops5tpM4U0EfMa-NtDO&export=download',
-      videoTime: 1.16,
+      videoTime:  videoTime[1]?.time,
       channelImage: require('../../assets/Image/krupal.png'),
       coverImage: require('../../assets/Image/bgimage1.jpg'),
       videoTitle: 'consectetur adipisicing elit. ipsum dolor sit amet Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
@@ -66,9 +58,10 @@ function Home() {
       subscribers: '14M'
     },
     {
+      id: 3,
       thumbnail: require('../../assets/Image/video1.jpg'),
       url: ' https://drive.google.com/uc?id=1ZoZhN53xYEPNdM4oNglJdnwD3TikXDNI&export=download',
-      videoTime: 1.08,
+      videoTime:  videoTime[2]?.time,
       channelImage: require('../../assets/Image/ronak.jpg'),
       coverImage: require('../../assets/Image/bgimage.jpg'),
       videoTitle: 'ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
@@ -79,9 +72,10 @@ function Home() {
       subscribers: '34.2M'
     },
     {
+      id: 4,
       thumbnail: require('../../assets/Image/video3.jpg'),
       url: 'https://drive.google.com/uc?id=1bMeRCw-oAr4hKOybUyrXrhINEW0dno0X&export=download',
-      videoTime: 1.35,
+      videoTime:  videoTime[3]?.time,
       channelImage: require('../../assets/Image/noman.jpg'),
       coverImage: require('../../assets/Image/whatsappweb.jpg'),
       videoTitle: 'adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
@@ -92,9 +86,10 @@ function Home() {
       subscribers: '8.5M'
     },
     {
+      id: 5,
       thumbnail: require('../../assets/Image/video1.jpg'),
       url: 'https://drive.google.com/uc?id=143LgiKUSav2GnhfAvk3V6RX_JC3-6bce&export=download',
-      videoTime: 1.15,
+      videoTime:  videoTime[4]?.time,
       channelImage: require('../../assets/Image/ronak.jpg'),
       coverImage: require('../../assets/Image/bgimage.jpg'),
       videoTitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
@@ -105,9 +100,10 @@ function Home() {
       subscribers: '34.2M'
     },
     {
+      id: 6,
       thumbnail: require('../../assets/Image/video2.jpg'),
       url: 'https://drive.google.com/uc?id=1_6XOtS4vT5RUhcn12iHPbiF05Yc82P-W&export=download',
-      videoTime: 2.01,
+      videoTime:  videoTime[5]?.time,
       channelImage: require('../../assets/Image/krupal.png'),
       coverImage: require('../../assets/Image/bgimage1.jpg'),
       videoTitle: 'ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
@@ -118,9 +114,10 @@ function Home() {
       subscribers: '14M'
     },
     {
+      id: 7,
       thumbnail: require('../../assets/Image/video3.jpg'),
       url: 'https://drive.google.com/uc?id=1ks3vMQwKz5P2TSs2rOKRUrkmWQXIcxGN&export=download',
-      videoTime: '2.00',
+      videoTime:  videoTime[6]?.time,
       channelImage: require('../../assets/Image/noman.jpg'),
       coverImage: require('../../assets/Image/whatsappweb.jpg'),
       videoTitle: 'adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
@@ -194,7 +191,6 @@ function Home() {
   //   rootMargin: '0px',
   //   threshold: 0.3
   // }, targerRef);
-
   return (
     <div >{
       accountModal ? <Account
@@ -217,12 +213,12 @@ function Home() {
           </div>
           <div style={{ height: "100vh" }}></div>
           <h1 ref={targerRef}>enter in view</h1> */}
-          {filterData?.map((item, index) => (
+          {filterData?.map((item) => (
             <VideoCard
               item={item}
-              index={index}
               setIsPopupModal={setIsPopupModal}
-              isPopupModal={isPopupModal} />
+              isPopupModal={isPopupModal}
+              setVideoTime={setVideoTime} />
           ))}
 
         </div>
@@ -236,8 +232,14 @@ function Home() {
 
     </div >
     // <div>
-    //   <div className={styles.inscreen} style={{ backgroundColor: View ? 'red' : 'green' }}>
-    //   </div>
+    //   <ReactPlayer
+    //     url='https://drive.google.com/uc?id=1MK6BPFJmV6iC3hE5mWAP-2x8DIqJiHF1&export=download'
+    //     className='ReactPlayer'
+    //     playing={View && true}
+    //     width="400px"
+    //     height="240px"
+    //     controls={true}
+    //   />
     //   <div style={{ height: "100vh" }}></div>
     //   <h1 ref={targerRef}>enter in view</h1>
     // </div>

@@ -20,7 +20,7 @@ function VideoScreen() {
     const [isLike, setIsLike] = useState(false)
     const [isDisLike, setIsDisLike] = useState(false)
     const [searchModal, setSearchModal] = useState(false)
-
+    const [isVideoEnd, setIsVideoEnd] = useState(false)
     const videoRef = useRef()
     // const [PopupModal, setPopupModal] = useState(false)
 
@@ -50,7 +50,7 @@ function VideoScreen() {
 
             <div className={styles.video}>
                 {/* <img src={videoDetails.thumbnail} /> */}
-                <div className={styles.playerWrapper}>
+                {!isVideoEnd ? <div className={styles.playerWrapper}>
                     <ReactPlayer
                         url={videoDetails.url}
                         className='ReactPlayer'
@@ -58,9 +58,20 @@ function VideoScreen() {
                         width="100%"
                         height="100%"
                         controls={true}
-                        loop={Infinity}
+                        onEnded={() => setIsVideoEnd(true)}
+                        onDuration={(duration) => console.log(duration)}
                     />
-                </div>
+                </div> :
+                    <div className={styles.uploadVideos}>
+                        <div className={styles.uploadVideosImg}>
+                            <img src={videoDetails.thumbnail} />
+                        </div>
+                        <div className={styles.uploadVideosDetails}>
+                            <h3> {`${videoDetails.videoTitle.substring(0, 35)}...`}</h3>
+                            <p>{videoDetails.channelName}</p>
+                        </div>
+                    </div>
+                }
             </div>
             <div className={styles.title}>
                 {videoDetails.videoTitle.length <= 69 ? videoDetails.videoTitle :
