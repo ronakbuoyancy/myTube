@@ -58,6 +58,7 @@ function VideoScreen() {
                         width="100%"
                         height="100%"
                         controls={true}
+                        loop={Infinity}
                     />
                 </div>
             </div>

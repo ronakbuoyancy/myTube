@@ -5,62 +5,86 @@ import { BsDot } from "react-icons/bs";
 import { useNavigate, Link } from 'react-router-dom';
 import ReactPlayer from "react-player";
 import { useState, useRef } from 'react';
-import { useInView } from 'react-intersection-observer';
-import { InView } from "react-intersection-observer";
-
+import { useEffect } from 'react';
+import { Waypoint } from 'react-waypoint';
 
 function VideoCard({ item, index, setIsPopupModal, isPopupModal }) {
     const navigate = useNavigate()
     const [View, setView] = useState(false);
     const [seekTime, setSeekTime] = useState(0)
+    const [played, setPlayed] = useState(0);
+    useEffect(() => {
+        updatePlayState(true)
+    }, [])
+    // console.log(View);
+    let [shouldPlay, updatePlayState] = useState(false);
 
+    let handleEnterViewport = function () {
+        console.log('enter', shouldPlay);
+        updatePlayState(true);
+
+    }
+    let handleExitViewport = function () {
+        console.log('exit', shouldPlay);
+        updatePlayState(false);
+
+    }
+    // console.log(shouldPlay);
     return (
+
         <div className={styles.videoCard} key={index}>
             <div className={styles.videoScreen}>
-                <div className={styles.video}
-                >
-                    {/* <img src={item.thumbnail}
-                        onClick={() =>
-                            navigate('/videoscreen', { state: { selecteditem: item } })}>
-                    </img> */}
+                <div className={styles.video} >
+                    <Waypoint style={{ backGroungColor: "red" }}
+                        onEnter={handleEnterViewport}
+                        onLeave={handleExitViewport}
+                        topOffset={80}
+                        bottomOffset={2000}
+                        onPositionChange={() => console.log('chang')}
+                    >
                     <ReactPlayer
                         url={item.url}
                         className='ReactPlayer'
-                        playing={true}
+                        playing={shouldPlay}
                         width="100%"
                         height="100%"
                         onClick={() =>
                             navigate('/videoscreen', { state: { selecteditem: item } })}
+                    // onProgress={(progress) => {
+                    //     console.log(progress.playedSeconds);
+                    // }}
                     />
-                    <span>{item.videoTime}</span>
-                </div>
-                <div className={styles.videoDetails} >
-                    <div style={{ display: 'flex' }} onClick={() => navigate('/videoscreen', { state: { selecteditem: item } })}>
-                        <div className={styles.image}>
-                            <img src={item.channelImage}></img>
+                </Waypoint>
+                <span>{item.videoTime}</span>
+            </div>
+            <div className={styles.videoDetails} >
+                <div style={{ display: 'flex' }} onClick={() => navigate('/videoscreen', { state: { selecteditem: item } })}>
+                    <div className={styles.image}>
+                        <img src={item.channelImage}></img>
+                    </div>
+                    <div className={styles.detail}>
+                        <div className={styles.title}>
+                            {item.videoTitle.length <= 69 ? item.videoTitle :
+                                `${item.videoTitle.substring(0, 70)}...`}
                         </div>
-                        <div className={styles.detail}>
-                            <div className={styles.title}>
-                                {item.videoTitle.length <= 69 ? item.videoTitle :
-                                    `${item.videoTitle.substring(0, 70)}...`}
-                            </div>
-                            <div className={styles.channel}>
-                                {item.channelName.length <= 19 ? item.channelName :
-                                    `${item.channelName.substring(0, 20)}...`}<span><BsDot className={styles.oneDot} /></span> {item.videoView} views <span><BsDot className={styles.oneDot} /></span> {item.videoLaunch}
-                            </div>
+                        <div className={styles.channel}>
+                            {item.channelName.length <= 19 ? item.channelName :
+                                `${item.channelName.substring(0, 20)}...`}<span><BsDot className={styles.oneDot} /></span> {item.videoView} views <span><BsDot className={styles.oneDot} /></span> {item.videoLaunch}
+                        </div>
 
-                        </div>
                     </div>
-                    <div className={styles.dot}>
-                        <HiOutlineDotsVertical
-                            onClick={() => {
-                                setIsPopupModal(!isPopupModal)
-                            }}
-                        />
-                    </div>
+                </div>
+                <div className={styles.dot}>
+                    <HiOutlineDotsVertical
+                        onClick={() => {
+                            setIsPopupModal(!isPopupModal)
+                        }}
+                    />
                 </div>
             </div>
         </div>
+        </div >
+
     )
 }
 

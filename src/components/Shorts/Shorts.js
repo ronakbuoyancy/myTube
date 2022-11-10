@@ -5,8 +5,7 @@ import { Carousel } from 'react-responsive-carousel';
 import ReactPlayer from "react-player";
 import { MdArrowBack } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
-import screenfull from 'screenfull';
-
+import Footer from '../Footer/Footer'
 function Shorts() {
     const navigate = useNavigate()
     const [indexSave, setIndexSave] = useState(0)
@@ -138,9 +137,7 @@ function Shorts() {
                             playing={indexSave === index && true}
                             width="100%"
                             height="100%"
-                        // onPlay={() => {
-                        //     screenfull.request()
-                        // }}
+                            loop={true}
                         />
                         <div>
                             <p className={styles.title}>
@@ -164,6 +161,8 @@ function Shorts() {
                 ))
                 }
             </Carousel>
+            <Footer />
+
         </div>
     )
 }
