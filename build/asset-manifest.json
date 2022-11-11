@@ -1,22 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.b52ebd60.css",
-    "main.js": "/static/js/main.16961419.js",
-    "static/media/video2.jpg": "/static/media/video2.93f80381cdf8430f6352.jpg",
+    "main.css": "/static/css/main.15fbfa2c.css",
+    "main.js": "/static/js/main.dfb8ff7d.js",
+    "static/media/video6.jpg": "/static/media/video6.93f80381cdf8430f6352.jpg",
     "static/media/bgimage1.jpg": "/static/media/bgimage1.93ffb1bfc9588fa43726.jpg",
+    "static/media/video3.jpg": "/static/media/video3.cecdbf87f6b3b554f61b.jpg",
     "static/media/Teko-Regular.ttf": "/static/media/Teko-Regular.3419209fb7c5d9f70ce3.ttf",
-    "static/media/video3.jpg": "/static/media/video3.4519b91069d2705d9746.jpg",
+    "static/media/video4.jpg": "/static/media/video4.4519b91069d2705d9746.jpg",
+    "static/media/video5.jpg": "/static/media/video5.9fcb6ddbf819d2ce0c8e.jpg",
     "static/media/video1.jpg": "/static/media/video1.03c57889d00bf6282fa4.jpg",
+    "static/media/video7.jpg": "/static/media/video7.f468c86f43143f5e2a40.jpg",
+    "static/media/video2.jpg": "/static/media/video2.31c7b1cc54c46a8fedd3.jpg",
     "static/media/jigar.jpg": "/static/media/jigar.97e755b2f411515af579.jpg",
     "static/media/ronak.jpg": "/static/media/ronak.448b4fe80fede613d268.jpg",
     "static/media/bgimage.jpg": "/static/media/bgimage.0ce004319e90dc4221ec.jpg",
     "static/media/krupal.png": "/static/media/krupal.3c37dddbf5efbef3689d.png",
     "index.html": "/index.html",
-    "main.b52ebd60.css.map": "/static/css/main.b52ebd60.css.map",
-    "main.16961419.js.map": "/static/js/main.16961419.js.map"
+    "main.15fbfa2c.css.map": "/static/css/main.15fbfa2c.css.map",
+    "main.dfb8ff7d.js.map": "/static/js/main.dfb8ff7d.js.map"
   },
   "entrypoints": [
-    "static/css/main.b52ebd60.css",
-    "static/js/main.16961419.js"
+    "static/css/main.15fbfa2c.css",
+    "static/js/main.dfb8ff7d.js"
   ]
 }

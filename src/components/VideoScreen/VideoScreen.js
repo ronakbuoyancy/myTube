@@ -8,22 +8,30 @@ import PopupModal from '../PopupModal/PopupModal';
 import { MdNotInterested, MdClose } from "react-icons/md";
 import { RiShareForwardLine, RiFlagLine } from "react-icons/ri";
 import { FiPlusSquare } from "react-icons/fi";
+import { SlReload } from "react-icons/sl";
 import { AiOutlineLike, AiFillLike, AiOutlineDislike, AiFillDislike } from "react-icons/ai";
 import ReactPlayer from "react-player";
 import { useNavigate } from 'react-router-dom';
-
-
+import allData from '../AllData/AllData';
+import ChannelVideo from '../ChannelVideo/ChannelVideo'
 function VideoScreen() {
     const location = useLocation()
     const navigate = useNavigate()
-    const videoDetails = location.state.selecteditem
+    // const videoDetails = location.state.selecteditem
+    const [videoDetails, setVideoDetails] = useState(location.state.selecteditem)
     const [isLike, setIsLike] = useState(false)
     const [isDisLike, setIsDisLike] = useState(false)
     const [searchModal, setSearchModal] = useState(false)
+    const [showReloadIcon, setshowReloadIcon] = useState(false)
+    const [reloadVideo, setReloadVideo] = useState(false)
     const [isVideoEnd, setIsVideoEnd] = useState(false)
+    const [nextVideo, setNextVideo] = useState()
+    const [count, setCount] = useState(10)
+    const [channel, setChannel] = useState({})
     const videoRef = useRef()
     // const [PopupModal, setPopupModal] = useState(false)
-
+    let randomNumber = Math.floor((Math.random() * 10))
+    // let randomNumber = (Math.floor((Math.random() * 10)) > 7) ? Math.floor((Math.random() * 10) - 3) : Math.floor((Math.random() * 10))
     const popupData = [
         {
             value: 'Not interested',
@@ -38,7 +46,33 @@ function VideoScreen() {
             icon: BsClock
         },
     ]
-    // console.log(videoDetails);
+        // useEffect(() => {
+        //     setTimeout(() => {
+        //         console.log(count--)
+        //     }, 1000);
+        // }, [])
+        ;
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (isVideoEnd) {
+                if (count > 0) {
+                    setCount(count - 1);
+                }
+            }
+        }, 1000);
+        if (count === 0) {
+            // setIsnextVideo(true)
+            setIsVideoEnd(false)
+            setReloadVideo(true)
+            setshowReloadIcon(false)
+            setVideoDetails(nextVideo)
+        }
+        return () => clearInterval(interval)
+    }, [count, isVideoEnd]);
+    console.log({ channel });
+    useEffect(() => {
+        setChannel(allData[randomNumber])
+    }, [])
     return (
         <div>
             <Header
@@ -50,26 +84,76 @@ function VideoScreen() {
 
             <div className={styles.video}>
                 {/* <img src={videoDetails.thumbnail} /> */}
-                {!isVideoEnd ? <div className={styles.playerWrapper}>
+                {showReloadIcon && <div className={styles.reloadIconDiv}>
+                    <SlReload className={styles.reloadIcon}
+                        onClick={() => {
+                            setshowReloadIcon(false)
+                            setReloadVideo(true)
+                        }} />
+                </div>}
+                <div className={styles.playerWrapper}>
                     <ReactPlayer
                         url={videoDetails.url}
-                        className='ReactPlayer'
-                        playing={true}
+                        className={styles.ReactPlayer}
+                        playing={reloadVideo && true}
                         width="100%"
                         height="100%"
                         controls={true}
-                        onEnded={() => setIsVideoEnd(true)}
-                        onDuration={(duration) => console.log(duration)}
+                        onEnded={() => {
+                            setshowReloadIcon(true)
+                            setIsVideoEnd(true)
+                            setNextVideo(allData[randomNumber])
+                        }}
+                        onPlay={() => {
+                            setReloadVideo(false)
+                            setCount(10)
+                        }}
+                        loop={reloadVideo && true}
+                    // onDuration={(duration) => console.log(duration)}
                     />
-                </div> :
-                    <div className={styles.uploadVideos}>
-                        <div className={styles.uploadVideosImg}>
-                            <img src={videoDetails.thumbnail} />
+                </div>
+                {isVideoEnd &&
+                    <div className={styles.nextVideoContainer}>
+                        <p className={styles.nextCount}>Up next in {count}</p>
+                        <div className={styles.uploadVideos}>
+                            <div className={styles.uploadVideosImg}>
+                                <img src={nextVideo.thumbnail} />
+                            </div>
+                            <div className={styles.uploadVideosDetails}>
+                                <h3> {`${nextVideo.videoTitle.substring(0, 35)}...`}</h3>
+                                <p>{nextVideo.channelName}</p>
+                            </div>
                         </div>
-                        <div className={styles.uploadVideosDetails}>
-                            <h3> {`${videoDetails.videoTitle.substring(0, 35)}...`}</h3>
-                            <p>{videoDetails.channelName}</p>
+                        <div className={styles.nextVideoBtn}>
+                            <p onClick={() => {
+                                setIsVideoEnd(false)
+                                setReloadVideo(false)
+                            }}>cancel</p>
+                            <p onClick={() => {
+                                setIsVideoEnd(false)
+                                setshowReloadIcon(false)
+                                setVideoDetails(nextVideo)
+                                // setVideoDetails(allData[randomNumber])
+                            }}>play now</p>
                         </div>
+                        {/* {isnextVideo &&
+                            <div className={styles.nextVideoplayerWrapper}>
+                                <ReactPlayer
+                                    url={nextVideoDetails.url}
+                                    className={styles.nextVideoReactPlayer}
+                                    playing={true}
+                                    width="100%"
+                                    height="100%"
+                                    controls={true}
+                                // onEnded={() => {
+                                //     setshowReloadIcon(true)
+                                // }}
+                                // onPlay={() => { setReloadVideo(false) }}
+                                // loop={reloadVideo && true}
+                                // onDuration={(duration) => console.log(duration)}
+                                />
+                            </div>
+                        } */}
                     </div>
                 }
             </div>
@@ -145,7 +229,14 @@ function VideoScreen() {
             {/* {PopupModal && <PopupModal
                 popupData={popupData}
             />} */}
-
+            <hr style={{ marginTop: '25px' }} />
+            <h3 style={{ marginLeft: '25px' }} >Popular videos</h3>
+            <div style={{ marginTop: '10px' }}>
+                {Object.keys(channel).length > 0 &&
+                    <ChannelVideo
+                        channel={channel}
+                        setVideoDetails={setVideoDetails} />}
+            </div>
         </div>
     )
 }

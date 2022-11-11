@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from './Channel.module.css'
 import { useLocation } from 'react-router-dom'
 import Header from '../Header/Header'
-import { HiOutlineDotsVertical } from "react-icons/hi";
+import ChannelVideo from '../ChannelVideo/ChannelVideo';
 
 
 function Channel() {
@@ -33,19 +33,8 @@ function Channel() {
             </div>
             <hr />
             <p style={{ marginLeft: '25px' }}>Uploads</p>
-            <div className={styles.uploadVideos}>
-                <div className={styles.uploadVideosImg}>
-                    <img src={channel.thumbnail} />
-                </div>
-                <div className={styles.uploadVideosDetails}>
-                    <h3> {`${channel.videoTitle.substring(0, 35)}...`}</h3>
-                    <p>{channel.videoView}{' '}views</p>
-                    <p>{channel.videoLaunch}</p>
-                </div>
-                <div style={{ marginLeft: '10px' }}>
-                    <HiOutlineDotsVertical />
-                </div>
-            </div>
+            <ChannelVideo
+                channel={channel} />
         </div>
     )
 }

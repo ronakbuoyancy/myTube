@@ -6,6 +6,7 @@ import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Channel from './components/Channel/Channel';
 import Shorts from './components/Shorts/Shorts';
+import Subscriptions from './components/Subscriptions/Subscriptions';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/signup' element={<Signup />} />
         <Route path='/channel' element={<Channel />} />
         <Route path='/shorts' element={<Shorts />} />
+        <Route path='/subscriptions' element={<Subscriptions />} />
       </Routes>
     </div>
   );

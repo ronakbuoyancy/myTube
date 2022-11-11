@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './VideoCard.module.css'
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { BsDot } from "react-icons/bs";
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ReactPlayer from "react-player";
 import { useState, useRef } from 'react';
 import { useEffect } from 'react';
@@ -16,7 +16,6 @@ function VideoCard({ item, setIsPopupModal, isPopupModal, setVideoTime }) {
     useEffect(() => {
         updatePlayState(true)
     }, [])
-    // console.log(View);
     let [shouldPlay, updatePlayState] = useState(false);
 
     let handleEnterViewport = function () {
@@ -66,7 +65,7 @@ function VideoCard({ item, setIsPopupModal, isPopupModal, setVideoTime }) {
                         />
                     </Waypoint>
                     {item.videoTime !== '' ?
-                        <span>{item.videoTime}</span> : null}
+                        <span>{item.videoTime}</span> : <span style={{ backgroundColor: "transparent" }}>''</span>}
                 </div>
                 <div className={styles.videoDetails} >
                     <div style={{ display: 'flex' }} onClick={() => navigate('/videoscreen', { state: { selecteditem: item } })}>

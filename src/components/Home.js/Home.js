@@ -12,6 +12,7 @@ import ReactPlayer from "react-player";
 import VideoCard from '../VideoCard/VideoCard';
 import { useMemo } from 'react';
 import Videoport from '../Videoport';
+import allData from '../AllData/AllData'
 
 function Home() {
   const [isPopupModal, setIsPopupModal] = useState(false)
@@ -21,113 +22,14 @@ function Home() {
   const [filterData, setFilterData] = useState()
   const [accountModal, setAccountModal] = useState(false)
   const [findCategory, setFindCategory] = useState()
+  const [isNoDataFound, setIsNoDataFound] = useState(false)
   const [videoTime, setVideoTime] = useState([])
   const navigate = useNavigate()
   useEffect(() => {
     filterDataHandler()
   }, [categoryName])
-  console.log();
-  console.log(videoTime);
-  const allData = [
-    {
-      id: 1,
-      thumbnail: require('../../assets/Image/video1.jpg'),
-      url: 'https://drive.google.com/uc?id=1MK6BPFJmV6iC3hE5mWAP-2x8DIqJiHF1&export=download',
-      videoTime: videoTime[0]?.time,
-      channelImage: require('../../assets/Image/ronak.jpg'),
-      coverImage: require('../../assets/Image/bgimage.jpg'),
-      videoTitle: 'title of video Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
-      channelName: 'buoyancy',
-      videoView: '28k',
-      videoLaunch: '1 month ago',
-      categoryType: 'movie',
-      subscribers: '34.2M'
-    },
-    {
-      id: 2,
-      thumbnail: require('../../assets/Image/video2.jpg'),
-      url: 'https://drive.google.com/uc?id=11LcWF7f9iFTDdops5tpM4U0EfMa-NtDO&export=download',
-      videoTime:  videoTime[1]?.time,
-      channelImage: require('../../assets/Image/krupal.png'),
-      coverImage: require('../../assets/Image/bgimage1.jpg'),
-      videoTitle: 'consectetur adipisicing elit. ipsum dolor sit amet Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
-      channelName: 'ITC',
-      videoView: '12k',
-      videoLaunch: '3 month ago',
-      categoryType: 'music',
-      subscribers: '14M'
-    },
-    {
-      id: 3,
-      thumbnail: require('../../assets/Image/video1.jpg'),
-      url: ' https://drive.google.com/uc?id=1ZoZhN53xYEPNdM4oNglJdnwD3TikXDNI&export=download',
-      videoTime:  videoTime[2]?.time,
-      channelImage: require('../../assets/Image/ronak.jpg'),
-      coverImage: require('../../assets/Image/bgimage.jpg'),
-      videoTitle: 'ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
-      channelName: 'buoyancy',
-      videoView: '13k',
-      videoLaunch: '6 day ago',
-      categoryType: 'gaming',
-      subscribers: '34.2M'
-    },
-    {
-      id: 4,
-      thumbnail: require('../../assets/Image/video3.jpg'),
-      url: 'https://drive.google.com/uc?id=1bMeRCw-oAr4hKOybUyrXrhINEW0dno0X&export=download',
-      videoTime:  videoTime[3]?.time,
-      channelImage: require('../../assets/Image/noman.jpg'),
-      coverImage: require('../../assets/Image/whatsappweb.jpg'),
-      videoTitle: 'adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
-      channelName: 'noman',
-      videoView: '8k',
-      videoLaunch: '2 month ago',
-      categoryType: 'movie',
-      subscribers: '8.5M'
-    },
-    {
-      id: 5,
-      thumbnail: require('../../assets/Image/video1.jpg'),
-      url: 'https://drive.google.com/uc?id=143LgiKUSav2GnhfAvk3V6RX_JC3-6bce&export=download',
-      videoTime:  videoTime[4]?.time,
-      channelImage: require('../../assets/Image/ronak.jpg'),
-      coverImage: require('../../assets/Image/bgimage.jpg'),
-      videoTitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
-      channelName: 'buoyancy',
-      videoView: '20k',
-      videoLaunch: '1.5 month ago',
-      categoryType: 'music',
-      subscribers: '34.2M'
-    },
-    {
-      id: 6,
-      thumbnail: require('../../assets/Image/video2.jpg'),
-      url: 'https://drive.google.com/uc?id=1_6XOtS4vT5RUhcn12iHPbiF05Yc82P-W&export=download',
-      videoTime:  videoTime[5]?.time,
-      channelImage: require('../../assets/Image/krupal.png'),
-      coverImage: require('../../assets/Image/bgimage1.jpg'),
-      videoTitle: 'ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
-      channelName: 'ITC',
-      videoView: '18k',
-      videoLaunch: '5 month ago',
-      categoryType: 'movie',
-      subscribers: '14M'
-    },
-    {
-      id: 7,
-      thumbnail: require('../../assets/Image/video3.jpg'),
-      url: 'https://drive.google.com/uc?id=1ks3vMQwKz5P2TSs2rOKRUrkmWQXIcxGN&export=download',
-      videoTime:  videoTime[6]?.time,
-      channelImage: require('../../assets/Image/noman.jpg'),
-      coverImage: require('../../assets/Image/whatsappweb.jpg'),
-      videoTitle: 'adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
-      channelName: 'noman',
-      videoView: '2.8k',
-      videoLaunch: '4 month ago',
-      categoryType: 'gaming',
-      subscribers: '8.5M'
-    },
-  ]
+  // console.log(videoTime);
+ 
   const popupData = [
     {
       value: 'Not interested',
@@ -142,12 +44,16 @@ function Home() {
       icon: BsClock
     },
   ]
+  let nodata
   const findDataHandler = () => {
     if (findCategory) {
-      const new2 = allData.find((item) => (item.categoryType === findCategory))
-      setFilterData(new2)
-      console.log({ new2 });
+      // props.setPersons(props.Data.filter((ele) => ele.name.includes(value)))
+      setFilterData(allData.filter((item) => item.categoryType.includes(findCategory)))
 
+      nodata = allData.filter((item) => item.categoryType.includes(findCategory))
+      if (nodata.length === 0) {
+        setIsNoDataFound(true)
+      }
       setactiveCategory(categoryName)
       if (findCategory === 'all') {
         setFilterData(allData)
@@ -166,6 +72,9 @@ function Home() {
         setFindCategory(findCategory)
         findDataHandler()
         setSearchModal(false)
+        setactiveCategory('')
+        nodata.length === 0 ? setIsNoDataFound(true) :
+          setIsNoDataFound(false)
       }
     }
   }
@@ -206,20 +115,26 @@ function Home() {
           allData={allData} />
         <Category
           setCategoryName={setCategoryName}
-          activeCategory={activeCategory} />
+          activeCategory={activeCategory}
+          setIsNoDataFound={setIsNoDataFound}
+          setFindCategory={setFindCategory} />
         <div className={styles.videoContainer}>
           {/* <div className={styles.inscreen} style={{ backgroundColor: View ? 'red' : 'green' }}>
 
           </div>
           <div style={{ height: "100vh" }}></div>
           <h1 ref={targerRef}>enter in view</h1> */}
-          {filterData?.map((item) => (
-            <VideoCard
-              item={item}
-              setIsPopupModal={setIsPopupModal}
-              isPopupModal={isPopupModal}
-              setVideoTime={setVideoTime} />
-          ))}
+          {!isNoDataFound ?
+            filterData?.map((item) => (
+              <VideoCard
+                item={item}
+                setIsPopupModal={setIsPopupModal}
+                isPopupModal={isPopupModal}
+                setVideoTime={setVideoTime} />
+            )) :
+            <p className={styles.noData}>no data found</p>
+          }
+
 
         </div>
         {isPopupModal &&

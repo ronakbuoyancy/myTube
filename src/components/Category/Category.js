@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './Category.module.css'
-function Category({ setCategoryName, activeCategory }) {
+function Category({ setCategoryName, activeCategory, setIsNoDataFound, setFindCategory }) {
     const categoryList = [
         {
             name: 'all'
@@ -32,7 +32,12 @@ function Category({ setCategoryName, activeCategory }) {
             {categoryList.map((item, index) => (
                 <div key={index} className={styles.categoryList}>
                     <p className={item.name === activeCategory ? styles.active : styles.notActive}
-                        onClick={() => setCategoryName(item.name)}>{item.name}</p>
+                        onClick={() => {
+                            // console.log(activeCategory);
+                            setCategoryName(item.name)
+                            setIsNoDataFound(false)
+                            setFindCategory('')
+                        }}>{item.name}</p>
                 </div>
             ))}
         </div>
