@@ -29,7 +29,7 @@ function Home() {
     filterDataHandler()
   }, [categoryName])
   // console.log(videoTime);
- 
+
   const popupData = [
     {
       value: 'Not interested',
@@ -112,7 +112,9 @@ function Home() {
           searchModal={searchModal}
           setSearchModal={setSearchModal}
           setFilterData={setFilterData}
-          allData={allData} />
+          setactiveCategory={setactiveCategory}
+          setIsNoDataFound={setIsNoDataFound}
+        />
         <Category
           setCategoryName={setCategoryName}
           activeCategory={activeCategory}

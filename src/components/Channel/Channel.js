@@ -3,12 +3,18 @@ import styles from './Channel.module.css'
 import { useLocation } from 'react-router-dom'
 import Header from '../Header/Header'
 import ChannelVideo from '../ChannelVideo/ChannelVideo';
-
+import { useEffect } from 'react';
+import allData from '../AllData/AllData';
 
 function Channel() {
     const location = useLocation()
     const channel = location.state.channelDetails
+    const NameofChannel = channel.channelName
     const [searchModal, setSearchModal] = useState(false)
+    const [channelData, setChannelData] = useState([])
+    useEffect(() => {
+        setChannelData(allData.filter((item) => (item.channelName === NameofChannel)))
+    }, [])
     return (
         <div>
             <Header
@@ -34,7 +40,7 @@ function Channel() {
             <hr />
             <p style={{ marginLeft: '25px' }}>Uploads</p>
             <ChannelVideo
-                channel={channel} />
+                channelData={channelData} />
         </div>
     )
 }

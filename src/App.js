@@ -7,6 +7,7 @@ import Signup from './components/Signup/Signup';
 import Channel from './components/Channel/Channel';
 import Shorts from './components/Shorts/Shorts';
 import Subscriptions from './components/Subscriptions/Subscriptions';
+import Library from './components/Library/Library';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/channel' element={<Channel />} />
         <Route path='/shorts' element={<Shorts />} />
         <Route path='/subscriptions' element={<Subscriptions />} />
+        <Route path='/library' element={<Library />} />
       </Routes>
     </div>
   );

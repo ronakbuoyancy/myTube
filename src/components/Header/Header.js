@@ -6,17 +6,16 @@ import { IoIosSearch, IoMdMic } from "react-icons/io";
 import { MdArrowBack } from "react-icons/md";
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../../assets/Font/Teko/Teko-Regular.ttf'
+import allData from '../AllData/AllData'
 
+function Header({ setAccountModal, channel, setFindCategory, handleKeyDown, searchModal, setSearchModal, findCategory, setFilterData, setactiveCategory, setIsNoDataFound }) {
 
-function Header({ setAccountModal, channel, setFindCategory, handleKeyDown, searchModal, setSearchModal, findCategory, setFilterData,allData }) {
-    // const [findCategory, setFindCategory] = useState()
     const location = useLocation()
     const navigate = useNavigate()
     const inputEvent = (e) => {
         setFindCategory(e.target.value)
         // console.log(e.target.value);
     }
-
     return (
         <div>
             {searchModal ?
@@ -40,6 +39,8 @@ function Header({ setAccountModal, channel, setFindCategory, handleKeyDown, sear
                         <SiBbciplayer className={styles.icon}
                             onClick={() => {
                                 setFindCategory('')
+                                setactiveCategory('all')
+                                setIsNoDataFound(false)
                                 setFilterData(allData)
                             }} />
                         {location.pathname === '/channel' ?
@@ -48,14 +49,17 @@ function Header({ setAccountModal, channel, setFindCategory, handleKeyDown, sear
                                 <p>MyTube</p>}
                     </div>
                     <div className={styles.headerSearch}>
-                        <IoIosSearch className={location.pathname === '/videoscreen' ?
+                        {/* <IoIosSearch className={location.pathname === '/videoscreen' ?
                             styles.videoScreensearchicon : styles.searchicon}
-                            onClick={() => setSearchModal(true)} />
-                        {location.pathname === '/' ?
+                            onClick={() => setSearchModal(true)} /> */}
+                        {location.pathname === '/' && <IoIosSearch className={styles.searchicon}
+                            onClick={() => setSearchModal(true)} />}
+                        {location.pathname === '/' &&
                             <div className={styles.user} onClick={() => setAccountModal(true)}>
                                 <img src={require('../../assets/Image/jigar.jpg')} />
-                            </div> : <HiOutlineDotsVertical
-                                style={{ color: location.pathname === '/videoscreen' ? 'white' : 'black', fontSize: "20px" }} />
+                            </div>
+                            // : <HiOutlineDotsVertical
+                            //     style={{ color: location.pathname === '/videoscreen' ? 'white' : 'black', fontSize: "20px" }} />
                         }
                     </div>
                 </div>

@@ -27,10 +27,10 @@ function VideoScreen() {
     const [isVideoEnd, setIsVideoEnd] = useState(false)
     const [nextVideo, setNextVideo] = useState()
     const [count, setCount] = useState(10)
-    const [channel, setChannel] = useState({})
-    const videoRef = useRef()
+    const [channelData, setChannelData] = useState()
+    // const videoRef = useRef()
     // const [PopupModal, setPopupModal] = useState(false)
-    let randomNumber = Math.floor((Math.random() * 10))
+    // let randomNumber = Math.floor(Math.random() * 7) + 1
     // let randomNumber = (Math.floor((Math.random() * 10)) > 7) ? Math.floor((Math.random() * 10) - 3) : Math.floor((Math.random() * 10))
     const popupData = [
         {
@@ -46,12 +46,24 @@ function VideoScreen() {
             icon: BsClock
         },
     ]
-        // useEffect(() => {
-        //     setTimeout(() => {
-        //         console.log(count--)
-        //     }, 1000);
-        // }, [])
-        ;
+
+    function generateRandom(min = 1, max = 7) {
+
+        let difference = max - min;
+        let rand = Math.random();
+        rand = Math.floor(rand * difference);
+        rand = rand + min;
+        if (rand !== videoDetails?.id || rand !== nextVideo?.id) {
+            return rand;
+        }
+        else {
+            let difference = max - min;
+            let rand = Math.random();
+            rand = Math.floor(rand * difference);
+            rand = rand + min;
+            return rand
+        }
+    }
     useEffect(() => {
         const interval = setInterval(() => {
             if (isVideoEnd) {
@@ -69,15 +81,22 @@ function VideoScreen() {
         }
         return () => clearInterval(interval)
     }, [count, isVideoEnd]);
-    console.log({ channel });
     useEffect(() => {
-        setChannel(allData[randomNumber])
+        setChannelData(allData.filter((item) => (item.channelName !== videoDetails.channelName)))
     }, [])
+
+    // const handleKeyDown = (e) => {
+    //     if (e.key === 'Enter') {
+    //         navigate('/')
+    //     }
+    // }
+
     return (
         <div>
             <Header
                 searchModal={searchModal}
                 setSearchModal={setSearchModal}
+            // handleKeyDown={handleKeyDown}
             // setPopupModal={setPopupModal}
             />
             {/* <Category /> */}
@@ -102,7 +121,7 @@ function VideoScreen() {
                         onEnded={() => {
                             setshowReloadIcon(true)
                             setIsVideoEnd(true)
-                            setNextVideo(allData[randomNumber])
+                            setNextVideo(allData[generateRandom()])
                         }}
                         onPlay={() => {
                             setReloadVideo(false)
@@ -232,10 +251,10 @@ function VideoScreen() {
             <hr style={{ marginTop: '25px' }} />
             <h3 style={{ marginLeft: '25px' }} >Popular videos</h3>
             <div style={{ marginTop: '10px' }}>
-                {Object.keys(channel).length > 0 &&
-                    <ChannelVideo
-                        channel={channel}
-                        setVideoDetails={setVideoDetails} />}
+
+                <ChannelVideo
+                    channelData={channelData}
+                    setVideoDetails={setVideoDetails} />
             </div>
         </div>
     )
