@@ -81,12 +81,17 @@ function Music() {
                 }} >
                     <MdArrowBack />
                 </div>
+                <div style={{height:'10%'}}>
                 <p>{newReleases[count]?.name}</p>
+                </div>
+                <div style={{height:'55%'}}>
                 <img src={newReleases[count]?.images[0].url} />
+                </div>
                 <div className={styles.musicDetails}>
                     <h3>{newReleases[count]?.name}</h3>
                     <p>{newReleases[count]?.artists[0].name}</p>
                 </div>
+                
                 <ProgressBar
                     completed={0}
                     height={5}
