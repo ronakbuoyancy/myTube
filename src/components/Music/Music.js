@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import ReactPlayer from "react-player";
 import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
 import styles from './Music.module.css'
 import axios from 'axios';
 import ProgressBar from "@ramonak/react-progress-bar";
@@ -9,9 +7,12 @@ import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 import { TbRepeat } from "react-icons/tb";
 import { FaRandom } from "react-icons/fa";
+import { MdArrowBack } from "react-icons/md";
+import { useNavigate } from 'react-router-dom';
+
 
 function Music() {
-
+    const navigate = useNavigate()
     const [newReleases, setNewReleases] = useState([])
     const [playlists, setPlaylists] = useState([])
     const [categories, setCategories] = useState([])
@@ -73,34 +74,34 @@ function Music() {
 
     return (
         <div>
-            <Header />
-            <div className={styles.musicContainer}>
-                {/* {newReleases?.map((item, index) => ( */}
-                <div
-                    className={styles.music}>
-                    <p>{newReleases[count]?.name}</p>
-                    <img src={newReleases[count]?.images[0].url} />
-                    <div className={styles.musicDetails}>
-                        <h3>{newReleases[count]?.name}</h3>
-                        <p>{newReleases[count]?.artists[0].name}</p>
-                    </div>
-                    <ProgressBar
-                        completed={0}
-                        height={5}
-                        bgColor='rgb(28, 137, 161)' 
-                        className={styles.progressBar}/>
-                    <div className={styles.controls}>
-                        <FaRandom 
-                        onClick={() => setCount(Math.floor(Math.random() * 19) + 1)} />
-                        <AiFillStepBackward style={{ fontSize: '30px' }}
-                            onClick={() => { if (count > 0) { setCount(count - 1) } }} />
-                        <BsFillPlayCircleFill style={{ fontSize: '45px' }} />
-                        <AiFillStepForward style={{ fontSize: '30px' }}
-                            onClick={() => { if (count < newReleases.length - 1) { setCount(count + 1) } }} />
-                        <TbRepeat />
-                    </div>
+
+            <div className={styles.music}>
+                <div className={styles.backIcon} onClick={() => {
+                    navigate('/')
+                }} >
+                    <MdArrowBack />
                 </div>
-                {/* ))} */}
+                <p>{newReleases[count]?.name}</p>
+                <img src={newReleases[count]?.images[0].url} />
+                <div className={styles.musicDetails}>
+                    <h3>{newReleases[count]?.name}</h3>
+                    <p>{newReleases[count]?.artists[0].name}</p>
+                </div>
+                <ProgressBar
+                    completed={0}
+                    height={5}
+                    bgColor='rgb(28, 137, 161)'
+                    className={styles.progressBar} />
+                <div className={styles.controls}>
+                    <FaRandom
+                        onClick={() => setCount(Math.floor(Math.random() * 19) + 1)} />
+                    <AiFillStepBackward style={{ fontSize: '30px' }}
+                        onClick={() => { if (count > 0) { setCount(count - 1) } }} />
+                    <BsFillPlayCircleFill style={{ fontSize: '45px' }} />
+                    <AiFillStepForward style={{ fontSize: '30px' }}
+                        onClick={() => { if (count < newReleases.length - 1) { setCount(count + 1) } }} />
+                    <TbRepeat />
+                </div>
             </div>
             <Footer />
         </div>
