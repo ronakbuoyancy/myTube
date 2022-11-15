@@ -4,13 +4,13 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 import { useLocation, useNavigate } from 'react-router-dom';
 
 
-function ChannelVideo({ channelData, setVideoDetails }) {
+function ChannelVideo({ channelData, setVideoDetails,filterData }) {
     const navigate = useNavigate()
     const location = useLocation()
     return (
-        <>
+        <div>
             {
-                channelData?.map((item, index) => (
+                filterData?.map((item, index) => (
                     <div className={styles.uploadVideos} key={index}
                         onClick={() => {
                             location.pathname === '/channel' ?
@@ -32,7 +32,7 @@ function ChannelVideo({ channelData, setVideoDetails }) {
                     </div>
                 ))
             }
-        </>
+        </div>
     )
 }
 

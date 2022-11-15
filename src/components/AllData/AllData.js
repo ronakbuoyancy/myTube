@@ -13,6 +13,8 @@ const allData = [
         videoLaunch: '1 month ago',
         categoryType: 'movie',
         subscribers: '34.2M',
+        videoType:'video'
+
     },
     {
         id: 2,
@@ -27,6 +29,8 @@ const allData = [
         videoLaunch: '3 month ago',
         categoryType: 'music',
         subscribers: '14M',
+        videoType:'video'
+
     },
     {
         id: 3,
@@ -41,6 +45,8 @@ const allData = [
         videoLaunch: '6 day ago',
         categoryType: 'gaming',
         subscribers: '34.2M',
+        videoType:'video'
+
     },
     {
         id: 4,
@@ -55,6 +61,8 @@ const allData = [
         videoLaunch: '2 month ago',
         categoryType: 'movie',
         subscribers: '8.5M',
+        videoType:'video'
+
     },
     {
         id: 5,
@@ -69,6 +77,8 @@ const allData = [
         videoLaunch: '1.5 month ago',
         categoryType: 'music',
         subscribers: '34.2M',
+        videoType:'video'
+
     },
     {
         id: 6,
@@ -83,6 +93,8 @@ const allData = [
         videoLaunch: '5 month ago',
         categoryType: 'movie',
         subscribers: '14M',
+        videoType:'video'
+
     },
     {
         id: 7,
@@ -97,49 +109,54 @@ const allData = [
         videoLaunch: '4 month ago',
         categoryType: 'gaming',
         subscribers: '8.5M',
-    },
-    // {
-    //     id: 8,
-    //     thumbnail: require('../../assets/Image/video8.jpg'),
-    //     url: 'https://drive.google.com/uc?id=1qsOy_go71JrtfWiHnjX45hvkylkmvo1X&export=download',
-    //     videoTime: '0.13',
-    //     channelImage: require('../../assets/Image/krupal.png'),
-    //     coverImage: require('../../assets/Image/bgimage1.jpg'),
-    //     videoTitle: 'ipsum dolor sit amet title of video Lorem, aamet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
-    //     channelName: 'krupal',
-    //     videoView: '2.8k',
-    //     videoLaunch: '4 month ago',
-    //     categoryType: 'gaming',
-    //     subscribers: '14M',
-    // },
-    // {
-    //     id: 9,
-    //     thumbnail: require('../../assets/Image/video9.jpg'),
-    //     url: 'https://drive.google.com/uc?id=1oNL5wQuNQmFaz9zZ7WvatKFiPEI5h6ab&export=download',
-    //     videoTime: '0.21',
-    //     channelImage: require('../../assets/Image/noman.jpg'),
-    //     coverImage: require('../../assets/Image/whatsappweb.jpg'),
-    //     videoTitle: 'Tempora quibusdam adipisicing elit.  quibusdam, voluptates aliquam blanditiis illo voluptas',
-    //     channelName: 'noman',
-    //     videoView: '2.8k',
-    //     videoLaunch: '4 month ago',
-    //     categoryType: 'gaming',
-    //     subscribers: '8.5M',
-    // },
-    // {
-    //     id: 10,
-    //     thumbnail: require('../../assets/Image/video10.jpg'),
-    //     url: 'https://drive.google.com/uc?id=1Ll9KowGW1SRJgTQP3adQgohFcXnttxzX&export=download',
-    //     videoTime: '0.04',
-    //     channelImage: require('../../assets/Image/ronak.jpg'),
-    //     coverImage: require('../../assets/Image/bgimage.jpg'),
-    //     videoTitle: 'Tempora quibusdam adipisicing elit.  quibusdam, voluptates aliquam blanditiis illo voluptas',
-    //     channelName: 'buoyancy',
-    //     videoView: '28k',
-    //     videoLaunch: '4 month ago',
-    //     categoryType: 'gaming',
-    //     subscribers: '8.5M',
+        videoType:'video'
 
-    // },
+    },
+    {
+        id: 8,
+        thumbnail: require('../../assets/Image/video8.png'),
+        url: 'https://drive.google.com/uc?id=1qsOy_go71JrtfWiHnjX45hvkylkmvo1X&export=download',
+        videoTime: '0.13',
+        channelImage: require('../../assets/Image/krupal.png'),
+        coverImage: require('../../assets/Image/bgimage1.jpg'),
+        videoTitle: 'ipsum dolor sit amet title of video Lorem, aamet consectetur adipisicing elit. Tempora quibusdam, voluptates aliquam blanditiis illo voluptas',
+        channelName: 'krupal',
+        videoView: '2.8k',
+        videoLaunch: '4 month ago',
+        categoryType: 'gaming',
+        subscribers: '14M',
+        videoType:'shorts'
+    },
+    {
+        id: 9,
+        thumbnail: require('../../assets/Image/video9.png'),
+        url: 'https://drive.google.com/uc?id=1oNL5wQuNQmFaz9zZ7WvatKFiPEI5h6ab&export=download',
+        videoTime: '0.21',
+        channelImage: require('../../assets/Image/noman.jpg'),
+        coverImage: require('../../assets/Image/whatsappweb.jpg'),
+        videoTitle: 'Tempora quibusdam adipisicing elit.  quibusdam, voluptates aliquam blanditiis illo voluptas',
+        channelName: 'noman',
+        videoView: '2.8k',
+        videoLaunch: '4 month ago',
+        categoryType: 'gaming',
+        subscribers: '8.5M',
+        videoType:'shorts'
+
+    },
+    {
+        id: 10,
+        thumbnail: require('../../assets/Image/video10.png'),
+        url: 'https://drive.google.com/uc?id=1Ll9KowGW1SRJgTQP3adQgohFcXnttxzX&export=download',
+        videoTime: '0.04',
+        channelImage: require('../../assets/Image/ronak.jpg'),
+        coverImage: require('../../assets/Image/bgimage.jpg'),
+        videoTitle: 'Tempora quibusdam adipisicing elit.  quibusdam, voluptates aliquam blanditiis illo voluptas',
+        channelName: 'buoyancy',
+        videoView: '28k',
+        videoLaunch: '4 month ago',
+        categoryType: 'gaming',
+        subscribers: '8.5M',
+        videoType:'shorts'
+    },
 ]
 export default allData;

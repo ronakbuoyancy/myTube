@@ -2,7 +2,7 @@
     width: 100%;
     height: 220px;
     background-color: black;
-    position: relative;
+    position: fixed;
     padding-top: 43px;
 }
 
@@ -20,9 +20,10 @@
     font-size: 15px;
     width: 90%;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 0px;
     justify-content: center;
     align-items: center;
+    padding-top: 285px;
 }
 
 .channel {

@@ -6,7 +6,7 @@ import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Channel from './components/Channel/Channel';
 import Shorts from './components/Shorts/Shorts';
-import Subscriptions from './components/Subscriptions/Subscriptions';
+import Subscriptions from './components/Music/Music';
 import Library from './components/Library/Library';
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         <Route path='/signup' element={<Signup />} />
         <Route path='/channel' element={<Channel />} />
         <Route path='/shorts' element={<Shorts />} />
-        <Route path='/subscriptions' element={<Subscriptions />} />
+        <Route path='/music' element={<Subscriptions />} />
         <Route path='/library' element={<Library />} />
       </Routes>
     </div>

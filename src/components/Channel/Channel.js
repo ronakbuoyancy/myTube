@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './Channel.module.css'
-import { useLocation } from 'react-router-dom'
+import { useLocation, NavLink } from 'react-router-dom'
 import Header from '../Header/Header'
 import ChannelVideo from '../ChannelVideo/ChannelVideo';
 import { useEffect } from 'react';
@@ -12,9 +12,44 @@ function Channel() {
     const NameofChannel = channel.channelName
     const [searchModal, setSearchModal] = useState(false)
     const [channelData, setChannelData] = useState([])
+    const [categoryName, setCategoryName] = useState('home')
+    const [activeCategory, setactiveCategory] = useState()
+    const [filterData, setFilterData] = useState([])
+    const categoryList = [
+        {
+            name: 'home'
+        },
+        {
+            name: 'video'
+        },
+        {
+            name: 'shorts'
+        },
+    ]
     useEffect(() => {
         setChannelData(allData.filter((item) => (item.channelName === NameofChannel)))
     }, [])
+    useEffect(() => {
+        filterDataHandler()
+    }, [channelData,categoryName])
+    const filterDataHandler = () => {
+        if (categoryName) {
+
+            if (categoryName === 'home') {
+                setFilterData(channelData)
+                setactiveCategory(categoryName)
+            }
+            else {
+                const new2 = channelData.filter((item) => (item.videoType === categoryName))
+                setFilterData(new2)
+                setactiveCategory(categoryName)
+            }
+        }
+        else {
+            setFilterData(channelData)
+        }
+    }
+    
     return (
         <div>
             <Header
@@ -38,9 +73,22 @@ function Channel() {
                 </div>
             </div>
             <hr />
-            <p style={{ marginLeft: '25px' }}>Uploads</p>
+            <div className={styles.category}>
+                {categoryList.map((item, index) => (
+                    <div key={index} className={styles.categoryList}>
+                        <p className={item.name === activeCategory ? styles.active : styles.notActive}
+                            onClick={() => {
+                                // console.log(activeCategory);
+                                setCategoryName(item.name)
+                                // setIsNoDataFound(false)
+                                // setFindCategory('')
+                            }}>{item.name}</p>
+                    </div>
+                ))}
+            </div>
+
             <ChannelVideo
-                channelData={channelData} />
+                filterData={filterData} />
         </div>
     )
 }

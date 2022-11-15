@@ -27,7 +27,7 @@ function VideoScreen() {
     const [isVideoEnd, setIsVideoEnd] = useState(false)
     const [nextVideo, setNextVideo] = useState()
     const [count, setCount] = useState(10)
-    const [channelData, setChannelData] = useState()
+    const [filterData, setFilterData] = useState([])
     // const videoRef = useRef()
     // const [PopupModal, setPopupModal] = useState(false)
     // let randomNumber = Math.floor(Math.random() * 7) + 1
@@ -82,7 +82,7 @@ function VideoScreen() {
         return () => clearInterval(interval)
     }, [count, isVideoEnd]);
     useEffect(() => {
-        setChannelData(allData.filter((item) => (item.channelName !== videoDetails.channelName)))
+        setFilterData(allData.filter((item) => (item.channelName !== videoDetails.channelName)))
     }, [])
 
     // const handleKeyDown = (e) => {
@@ -155,24 +155,6 @@ function VideoScreen() {
                                 // setVideoDetails(allData[randomNumber])
                             }}>play now</p>
                         </div>
-                        {/* {isnextVideo &&
-                            <div className={styles.nextVideoplayerWrapper}>
-                                <ReactPlayer
-                                    url={nextVideoDetails.url}
-                                    className={styles.nextVideoReactPlayer}
-                                    playing={true}
-                                    width="100%"
-                                    height="100%"
-                                    controls={true}
-                                // onEnded={() => {
-                                //     setshowReloadIcon(true)
-                                // }}
-                                // onPlay={() => { setReloadVideo(false) }}
-                                // loop={reloadVideo && true}
-                                // onDuration={(duration) => console.log(duration)}
-                                />
-                            </div>
-                        } */}
                     </div>
                 }
             </div>
@@ -253,7 +235,7 @@ function VideoScreen() {
             <div style={{ marginTop: '10px' }}>
 
                 <ChannelVideo
-                    channelData={channelData}
+                    filterData={filterData}
                     setVideoDetails={setVideoDetails} />
             </div>
         </div>
