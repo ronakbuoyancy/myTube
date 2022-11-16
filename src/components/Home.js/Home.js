@@ -24,10 +24,11 @@ function Home() {
   const [findCategory, setFindCategory] = useState()
   const [isNoDataFound, setIsNoDataFound] = useState(false)
   const [videoTime, setVideoTime] = useState([])
+  const [inViewPort, setInviewPort] = useState([])
   const navigate = useNavigate()
   useEffect(() => {
     filterDataHandler()
-  }, [categoryName])
+  }, [categoryName,inViewPort])
   // console.log(videoTime);
 
   const popupData = [
@@ -127,12 +128,16 @@ function Home() {
           <div style={{ height: "100vh" }}></div>
           <h1 ref={targerRef}>enter in view</h1> */}
           {!isNoDataFound ?
-            filterData?.map((item) => (
+            filterData?.map((item,index) => (
               <VideoCard
                 item={item}
+                index={index}
                 setIsPopupModal={setIsPopupModal}
                 isPopupModal={isPopupModal}
-                setVideoTime={setVideoTime} />
+                setVideoTime={setVideoTime} 
+                inViewPort = {inViewPort}
+                setInviewPort={setInviewPort}
+                />
             )) :
             <p className={styles.noData}>no data found</p>
           }
