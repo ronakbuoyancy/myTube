@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Footer from '../Footer/Footer';
 import styles from './Music.module.css'
+import './style.css'
 import axios from 'axios';
 import ProgressBar from "@ramonak/react-progress-bar";
 import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
-import { BsFillPlayCircleFill } from "react-icons/bs";
+import { BsFillPlayCircleFill, BsFillPauseCircleFill } from "react-icons/bs";
 import { TbRepeat } from "react-icons/tb";
 import { FaRandom } from "react-icons/fa";
 import { MdArrowBack } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
-
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
 
 function Music() {
     const navigate = useNavigate()
@@ -17,12 +19,32 @@ function Music() {
     const [playlists, setPlaylists] = useState([])
     const [categories, setCategories] = useState([])
     const [count, setCount] = useState(0)
+    const [isPlaying, setIsPlaying] = useState(false)
+    const audioElem = useRef()
+    // useEffect(() => {
+    //     if (isPlaying) {
+    //         audioElem.current.play()
+    //     }
+    //     else {
+    //         audioElem.current.pause()
+    //     }
+    // }, [isPlaying])
+
+    const clickRef = useRef();
+
+    //     const checkWidth = (e)=>
+    //   {
+    //     let width = clickRef.current.clientWidth;
+    //     const offset = e.nativeEvent.offsetX;
+
+    //     const divprogress = offset / width * 100;
+    //     audioElem.current.currentTime = divprogress / 100 * currentSong.length;
+
+    //   }
     const spotify = {
         ClientId: '532915f2be8c47ea98027f16a6274844',
         ClientSecret: "69fe0ed5db1c40199b2ca98dbe6a73e7"
     }
-
-
     const [token, setToken] = useState('');
 
     useEffect(() => {
@@ -43,7 +65,7 @@ function Music() {
                     headers: { 'Authorization': 'Bearer ' + tokenResponse.data.access_token }
                 })
                     .then(genreResponse => {
-                        // console.log('new-releases', genreResponse.data.albums.items)
+                        console.log('new-releases', genreResponse.data.albums.items)
                         setNewReleases(genreResponse.data.albums.items)
                     });
 
@@ -81,32 +103,53 @@ function Music() {
                 }} >
                     <MdArrowBack />
                 </div>
-                <div style={{height:'10%'}}>
-                <p>{newReleases[count]?.name}</p>
+                <div className={styles.musicTitle}>
+                    <p>{newReleases[count]?.name}</p>
                 </div>
-                <div style={{height:'55%'}}>
-                <img src={newReleases[count]?.images[0].url} />
+                <div style={{ height: '50%' }}>
+                    <img src={newReleases[count]?.images[0].url} />
                 </div>
                 <div className={styles.musicDetails}>
                     <h3>{newReleases[count]?.name}</h3>
                     <p>{newReleases[count]?.artists[0].name}</p>
                 </div>
-                
-                <ProgressBar
-                    completed={0}
-                    height={5}
-                    bgColor='rgb(28, 137, 161)'
-                    className={styles.progressBar} />
-                <div className={styles.controls}>
+
+
+                {/* 
+                <audio ref={audioElem}
+                    src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+                    className={styles.audioPlyer}
+                /> */}
+                <AudioPlayer
+                    style={{ backgroundColor: '#15151500' }}
+                    autoPlay={false}
+                    src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+                    onPlay={e => console.log("onPlay")}
+                    customVolumeControls={[]}
+                    showSkipControls={true} showJumpControls={false}
+                    customIcons={{
+                        play: <BsFillPlayCircleFill className={styles.controlIcon} />,
+                        pause: <BsFillPauseCircleFill className={styles.controlIcon} />,
+                        previous: <AiFillStepBackward className={styles.controlIcon}
+                            onClick={() => { if (count > 0) { setCount(count - 1) } }} />,
+                        next: <AiFillStepForward className={styles.controlIcon}
+                            onClick={() => { if (count < newReleases.length - 1) { setCount(count + 1) } }} />,
+                        loop: <TbRepeat className={styles.controlIcon} />
+                    }}
+                />
+                {/* <div className={styles.controls}>
                     <FaRandom
                         onClick={() => setCount(Math.floor(Math.random() * 19) + 1)} />
                     <AiFillStepBackward style={{ fontSize: '30px' }}
                         onClick={() => { if (count > 0) { setCount(count - 1) } }} />
-                    <BsFillPlayCircleFill style={{ fontSize: '45px' }} />
+                    {!isPlaying ?
+                        <BsFillPlayCircleFill style={{ fontSize: '45px' }} onClick={() => setIsPlaying(true)} /> :
+                        <BsFillPauseCircleFill style={{ fontSize: '45px' }} onClick={() => setIsPlaying(false)} />}
+
                     <AiFillStepForward style={{ fontSize: '30px' }}
                         onClick={() => { if (count < newReleases.length - 1) { setCount(count + 1) } }} />
                     <TbRepeat />
-                </div>
+                </div> */}
             </div>
             <Footer />
         </div>
