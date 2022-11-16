@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import Footer from '../Footer/Footer';
 import styles from './Music.module.css'
-import './style.css'
+import './style.scss'
 import axios from 'axios';
 import ProgressBar from "@ramonak/react-progress-bar";
 import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
@@ -65,7 +65,7 @@ function Music() {
                     headers: { 'Authorization': 'Bearer ' + tokenResponse.data.access_token }
                 })
                     .then(genreResponse => {
-                        console.log('new-releases', genreResponse.data.albums.items)
+                        // console.log('new-releases', genreResponse.data.albums.items)
                         setNewReleases(genreResponse.data.albums.items)
                     });
 
@@ -121,8 +121,9 @@ function Music() {
                     className={styles.audioPlyer}
                 /> */}
                 <AudioPlayer
-                    className={styles.audioPlyer}
-                    style={{ backgroundColor: '#15151500' }}
+                    // className={styles.audioPlyer}
+                    className='musicPlayer'
+                    // style={{ backgroundColor: '#15151500' }}
                     autoPlay={false}
                     src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
                     onPlay={e => console.log("onPlay")}
@@ -132,8 +133,10 @@ function Music() {
                         play: <BsFillPlayCircleFill className={styles.controlIcon} />,
                         pause: <BsFillPauseCircleFill className={styles.controlIcon} />,
                         previous: <AiFillStepBackward className={styles.controlIcon}
+                            style={{ color: count === 0 ? 'grey' : 'white' }}
                             onClick={() => { if (count > 0) { setCount(count - 1) } }} />,
                         next: <AiFillStepForward className={styles.controlIcon}
+                            style={{ color: count === newReleases.length - 1 ? 'grey' : 'white' }}
                             onClick={() => { if (count < newReleases.length - 1) { setCount(count + 1) } }} />,
                         loop: <TbRepeat className={styles.controlIcon} />
                     }}

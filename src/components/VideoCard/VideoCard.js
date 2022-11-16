@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./VideoCard.module.css";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { BsDot } from "react-icons/bs";
+import { GoMute, GoUnmute } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { useState, useRef } from "react";
@@ -22,18 +23,24 @@ function VideoCard({
   // const [View, setView] = useState(false);
   // const [seekTime, setSeekTime] = useState(0)
   // const [played, setPlayed] = useState(0);
-   const [shouldPlay, updatePlayState] = useState(false);
+  const [shouldPlay, updatePlayState] = useState(false);
+  const [isMute, setIsMute] = useState(true);
 
   return (
     <div className={styles.videoCard} key={item.id}>
       <div className={styles.videoScreen}>
         <div className={styles.video}>
-          <VisibilitySensor 
-          onChange={(isVisible) => updatePlayState(isVisible)} 
-          offset={{
-            bottom: '350'
-          }}
+        {isMute ?
+            <GoMute className={styles.mute} onClick={()=>setIsMute(false)}/> :
+            <GoUnmute className={styles.mute} onClick={()=>setIsMute(true)}/>
+          }
+          <VisibilitySensor
+            onChange={(isVisible) => updatePlayState(isVisible)}
+            offset={{
+              bottom: '350'
+            }}
           >
+            
             <ReactPlayer
               loop={true}
               url={item.url}
@@ -41,6 +48,7 @@ function VideoCard({
               playing={shouldPlay}
               width="100%"
               height="100%"
+              muted={isMute}
               onClick={() =>
                 navigate("/videoscreen", { state: { selecteditem: item } })
               }
@@ -63,11 +71,9 @@ function VideoCard({
             />
           </VisibilitySensor>
 
-          {item.videoTime !== "" ? (
-            <span>{item.videoTime}</span>
-          ) : (
-            <span style={{ backgroundColor: "transparent" }}>''</span>
-          )}
+          
+          <span>{item.videoTime}</span>
+
         </div>
         <div className={styles.videoDetails}>
           <div

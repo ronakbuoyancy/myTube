@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react'
 import Category from '../Category/Category'
 import Header from '../Header/Header'
 import styles from './VideoScreen.module.css'
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { BsDot, BsClock } from "react-icons/bs";
 import PopupModal from '../PopupModal/PopupModal';
 import { MdNotInterested, MdClose } from "react-icons/md";
@@ -14,6 +14,8 @@ import ReactPlayer from "react-player";
 import { useNavigate } from 'react-router-dom';
 import allData from '../AllData/AllData';
 import ChannelVideo from '../ChannelVideo/ChannelVideo'
+import { RWebShare } from "react-web-share";
+
 function VideoScreen() {
     const location = useLocation()
     const navigate = useNavigate()
@@ -28,6 +30,9 @@ function VideoScreen() {
     const [nextVideo, setNextVideo] = useState()
     const [count, setCount] = useState(10)
     const [filterData, setFilterData] = useState([])
+    const [likecount, setLikeCount] = useState(100)
+    const [isSubscribe, setIsSubscribe] = useState(false)
+
     // const videoRef = useRef()
     // const [PopupModal, setPopupModal] = useState(false)
     // let randomNumber = Math.floor(Math.random() * 7) + 1
@@ -82,14 +87,9 @@ function VideoScreen() {
         return () => clearInterval(interval)
     }, [count, isVideoEnd]);
     useEffect(() => {
-        setFilterData(allData.filter((item) => (item.channelName !== videoDetails.channelName)))
-    }, [])
-
-    // const handleKeyDown = (e) => {
-    //     if (e.key === 'Enter') {
-    //         navigate('/')
-    //     }
-    // }
+        let newData = allData.filter((item) => (item.channelName !== videoDetails.channelName))
+        setFilterData(newData.filter((item) => (item.id !== videoDetails.id)))
+    }, [videoDetails])
 
     return (
         <div>
@@ -185,7 +185,8 @@ function VideoScreen() {
                     <p>{videoDetails.subscribers}</p>
                 </div>
                 <div>
-                    <p className={styles.subscribe}>subscribe</p>
+                    <p className={styles.subscribe}
+                        style={{ color: isSubscribe ? 'black' : 'red' }} onClick={() => setIsSubscribe(!isSubscribe)}>{isSubscribe ? 'subscribed' : 'subscribe'}</p>
                 </div>
 
             </div>
@@ -195,32 +196,50 @@ function VideoScreen() {
                         <AiFillLike onClick={() => {
                             setIsLike(!isLike)
                             setIsDisLike(false)
+                            setLikeCount(parseInt(likecount) - 1)
                         }} /> :
                         <AiOutlineLike onClick={() => {
                             setIsLike(!isLike)
                             setIsDisLike(false)
+                            setLikeCount(parseInt(likecount) + 1)
                         }} />
                     }
 
-                    <p style={{ borderRight: '1px solid grey', height: '26px', paddingTop: '10px', paddingRight: '15px' }}>48K</p>
+                    <p style={{ borderRight: '1px solid grey', height: '26px', paddingTop: '10px', paddingRight: '15px' }}>{likecount}</p>
                     {isDisLike ?
                         <AiFillDislike onClick={() => {
                             setIsDisLike(!isDisLike)
                             setIsLike(false)
+                            setLikeCount(parseInt(likecount) + 1)
                         }} /> :
                         <AiOutlineDislike onClick={() => {
                             setIsDisLike(!isDisLike)
                             setIsLike(false)
+                            setLikeCount(parseInt(likecount) - 1)
                         }} />
                     }
                 </div>
-                <div className={styles.Like_share}>
-                    <RiShareForwardLine />
-                    <p>share</p>
+                <div >
+                    <RWebShare
+                        data={{
+                            text: "Like humans, flamingos make friends for life",
+                            url: "https://on.natgeo.com/2zHaNup",
+                            title: "Share this article on Flamingos"
+                        }}
+                        onClick={() => console.info("share successful!")}
+                    >
+                        <div className={styles.Like_share}>
+                            <RiShareForwardLine />
+                            <p>Share</p>
+                        </div>
+                    </RWebShare>
+
                 </div>
-                <div className={styles.Like_share}>
-                    <FiPlusSquare />
-                    <p>save</p>
+                <div>
+                    <a href={videoDetails.url} download className={styles.Like_share}><FiPlusSquare />
+                        <p>save</p></a>
+                    {/* <Link to={videoDetails.url} target="_blank" download>Download</Link> */}
+
                 </div>
                 <div className={styles.Like_share}>
                     <RiFlagLine />

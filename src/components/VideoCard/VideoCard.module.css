@@ -1,7 +1,7 @@
 .videoScreen {
     display: flex;
     flex-direction: column;
-    margin-top: 5px;
+    margin-top: 20px;
     margin-bottom: 15px;
 }
 
@@ -16,6 +16,15 @@
     object-fit: cover;
     height: 100%;
     width: 100%;
+}
+
+.mute {
+    position: absolute;
+    float: right;
+    right: 6px;
+    top: 10px;
+    font-size: 16px;
+    z-index: 1;
 }
 
 .video span {

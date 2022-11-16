@@ -20,6 +20,8 @@
     "react-toastify": "^9.1.1",
     "react-visibility-sensor": "^5.1.1",
     "react-waypoint": "^10.3.0",
+    "react-web-share": "^2.0.2",
+    "sass": "^1.56.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

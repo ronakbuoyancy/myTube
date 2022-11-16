@@ -3,8 +3,7 @@ import styles from './ChannelVideo.module.css'
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { useLocation, useNavigate } from 'react-router-dom';
 
-
-function ChannelVideo({ channelData, setVideoDetails,filterData }) {
+function ChannelVideo({ setVideoDetails, filterData }) {
     const navigate = useNavigate()
     const location = useLocation()
     return (
@@ -26,9 +25,9 @@ function ChannelVideo({ channelData, setVideoDetails,filterData }) {
                             <p>{item.videoView}{' '}views</p>
                             <p>{item.videoLaunch}</p>
                         </div>
-                        <div style={{ marginLeft: '10px', marginTop: "10px" }}>
+                        {/* <div style={{ marginLeft: '10px', marginTop: "10px" }}>
                             <HiOutlineDotsVertical />
-                        </div>
+                        </div> */}
                     </div>
                 ))
             }

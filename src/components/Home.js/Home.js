@@ -83,7 +83,6 @@ function Home() {
     if (categoryName) {
       const new2 = allData.filter((item) => (item.categoryType === categoryName))
       setFilterData(new2)
-      console.log({ new2 });
 
       setactiveCategory(categoryName)
       if (categoryName === 'all') {

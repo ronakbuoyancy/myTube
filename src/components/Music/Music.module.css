@@ -14,11 +14,11 @@
 }
 
 .musicTitle {
-    height: 10%;
+    height: 8%;
 }
 
 .musicTitle p {
-    padding-top: 20px;
+    padding-top: 10px;
     margin-left: 19px;
     width: 90%;
     height: 40px;
@@ -29,7 +29,7 @@
     height: 100%;
     margin: auto;
     display: flex;
-    margin-top: 20px;
+    margin-top: 10px;
     border-radius: 20px;
 }
 
@@ -66,13 +66,6 @@
     align-items: center;
     font-size: 20px;
     width: 100%;
-}
-
-.audioPlyer {
-    width: 90%;
-    margin: auto;
-    background-color: #15151500;
-    margin-bottom: 10px
 }
 
 .musicTime {
