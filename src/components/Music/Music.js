@@ -121,11 +121,11 @@ function Music() {
                     className={styles.audioPlyer}
                 /> */}
                 <AudioPlayer
-                    style={{ backgroundColor: '#15151500' }}
+                    style={{ backgroundColor: '#15151500', marginBottom: '10px' }}
                     autoPlay={false}
                     src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
                     onPlay={e => console.log("onPlay")}
-                    customVolumeControls={[]}
+                    // customVolumeControls={[]}
                     showSkipControls={true} showJumpControls={false}
                     customIcons={{
                         play: <BsFillPlayCircleFill className={styles.controlIcon} />,
