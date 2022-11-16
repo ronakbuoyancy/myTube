@@ -4,3 +4,7 @@
     user-select: none;
     -webkit-user-select: none;
 }
+
+.rhap_container {
+    width: 95% !important;
+}

@@ -1,9 +1,16 @@
 .music {
-    width: 99%;
-    height: 100%;
     background-color: black;
     color: white;
-    border: 1px solid black;
+    width: 100%;
+    height: 100vh;
+}
+
+.backIcon {
+    padding-top: 20px;
+    padding-left: 10px;
+    z-index: 2;
+    font-size: 28px;
+    color: white;
 }
 
 .musicTitle {
@@ -11,7 +18,7 @@
 }
 
 .musicTitle p {
-    padding-top: 40px;
+    padding-top: 20px;
     margin-left: 19px;
     width: 90%;
     height: 40px;
@@ -43,6 +50,10 @@
     height: 100%;
 }
 
+.musicDetails p {
+    height: 12px;
+}
+
 .artistsName {
     margin-top: 10px;
     width: 100%;
@@ -57,20 +68,11 @@
     width: 100%;
 }
 
-/* 
-.progressBar {
+.audioPlyer {
     width: 90%;
-    display: flex;
     margin: auto;
-} */
-
-.backIcon {
-    position: absolute;
-    top: 20px;
-    left: 10px;
-    z-index: 2;
-    font-size: 28px;
-    color: white;
+    background-color: #15151500;
+    margin-bottom: 10px
 }
 
 .musicTime {

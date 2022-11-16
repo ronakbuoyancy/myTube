@@ -106,7 +106,7 @@ function Music() {
                 <div className={styles.musicTitle}>
                     <p>{newReleases[count]?.name}</p>
                 </div>
-                <div style={{ height: '50%' }}>
+                <div style={{ height: '45%' }}>
                     <img src={newReleases[count]?.images[0].url} />
                 </div>
                 <div className={styles.musicDetails}>
@@ -121,7 +121,8 @@ function Music() {
                     className={styles.audioPlyer}
                 /> */}
                 <AudioPlayer
-                    style={{ backgroundColor: '#15151500', marginBottom: '10px' }}
+                    className={styles.audioPlyer}
+                    style={{ backgroundColor: '#15151500' }}
                     autoPlay={false}
                     src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
                     onPlay={e => console.log("onPlay")}
