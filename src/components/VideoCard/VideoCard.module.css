@@ -21,7 +21,7 @@
 .mute {
     position: absolute;
     float: right;
-    right: 6px;
+    right: 10px;
     top: 10px;
     font-size: 16px;
     z-index: 1;

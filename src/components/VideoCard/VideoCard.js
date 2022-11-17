@@ -12,7 +12,6 @@ import VisibilitySensor from "react-visibility-sensor";
 
 function VideoCard({
   item,
-  index,
   setIsPopupModal,
   isPopupModal,
   setVideoTime,
@@ -27,20 +26,19 @@ function VideoCard({
   const [isMute, setIsMute] = useState(true);
 
   return (
-    <div className={styles.videoCard} key={item.id}>
+    <div className={styles.videoCard}>
       <div className={styles.videoScreen}>
         <div className={styles.video}>
-        {isMute ?
-            <GoMute className={styles.mute} onClick={()=>setIsMute(false)}/> :
-            <GoUnmute className={styles.mute} onClick={()=>setIsMute(true)}/>
+          {isMute ?
+            <GoMute className={styles.mute} onClick={() => setIsMute(false)} /> :
+            <GoUnmute className={styles.mute} onClick={() => setIsMute(true)} />
           }
           <VisibilitySensor
             onChange={(isVisible) => updatePlayState(isVisible)}
             offset={{
               bottom: '350'
-            }}
-          >
-            
+            }}>
+
             <ReactPlayer
               loop={true}
               url={item.url}
@@ -52,9 +50,6 @@ function VideoCard({
               onClick={() =>
                 navigate("/videoscreen", { state: { selecteditem: item } })
               }
-              // onProgress={(progress) => {
-              //     console.log(progress.playedSeconds);
-              // }}
 
               onDuration={(duration) =>
                 setVideoTime((preTime) => {
@@ -71,7 +66,7 @@ function VideoCard({
             />
           </VisibilitySensor>
 
-          
+
           <span>{item.videoTime}</span>
 
         </div>

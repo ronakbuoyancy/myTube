@@ -28,7 +28,7 @@ function Home() {
   const navigate = useNavigate()
   useEffect(() => {
     filterDataHandler()
-  }, [categoryName,inViewPort])
+  }, [categoryName, inViewPort])
   // console.log(videoTime);
 
   const popupData = [
@@ -94,12 +94,7 @@ function Home() {
       setFilterData(allData)
     }
   }
-  // const targerRef = useRef(null)
-  // const View = Videoport({
-  //   root: null,
-  //   rootMargin: '0px',
-  //   threshold: 0.3
-  // }, targerRef);
+
   return (
     <div >{
       accountModal ? <Account
@@ -121,27 +116,21 @@ function Home() {
           setIsNoDataFound={setIsNoDataFound}
           setFindCategory={setFindCategory} />
         <div className={styles.videoContainer}>
-          {/* <div className={styles.inscreen} style={{ backgroundColor: View ? 'red' : 'green' }}>
 
-          </div>
-          <div style={{ height: "100vh" }}></div>
-          <h1 ref={targerRef}>enter in view</h1> */}
           {!isNoDataFound ?
-            filterData?.map((item,index) => (
+            filterData?.map((item, index) => (
               <VideoCard
                 item={item}
-                index={index}
+                key={index}
                 setIsPopupModal={setIsPopupModal}
                 isPopupModal={isPopupModal}
-                setVideoTime={setVideoTime} 
-                inViewPort = {inViewPort}
+                setVideoTime={setVideoTime}
+                inViewPort={inViewPort}
                 setInviewPort={setInviewPort}
-                />
+              />
             )) :
             <p className={styles.noData}>no data found</p>
           }
-
-
         </div>
         {isPopupModal &&
           <PopupModal
@@ -150,20 +139,7 @@ function Home() {
         }
         <Footer />
       </>}
-
     </div >
-    // <div>
-    //   <ReactPlayer
-    //     url='https://drive.google.com/uc?id=1MK6BPFJmV6iC3hE5mWAP-2x8DIqJiHF1&export=download'
-    //     className='ReactPlayer'
-    //     playing={View && true}
-    //     width="400px"
-    //     height="240px"
-    //     controls={true}
-    //   />
-    //   <div style={{ height: "100vh" }}></div>
-    //   <h1 ref={targerRef}>enter in view</h1>
-    // </div>
   )
 }
 
