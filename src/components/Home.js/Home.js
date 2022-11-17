@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Home.module.css'
 import { MdNotInterested, MdClose } from "react-icons/md";
 import { BsClock } from "react-icons/bs";
@@ -8,10 +8,7 @@ import Account from '../Account/Account';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import PopupModal from '../PopupModal/PopupModal';
-import ReactPlayer from "react-player";
 import VideoCard from '../VideoCard/VideoCard';
-import { useMemo } from 'react';
-import Videoport from '../Videoport';
 import allData from '../AllData/AllData'
 
 function Home() {
@@ -23,12 +20,12 @@ function Home() {
   const [accountModal, setAccountModal] = useState(false)
   const [findCategory, setFindCategory] = useState()
   const [isNoDataFound, setIsNoDataFound] = useState(false)
+  const [isMute, setIsMute] = useState(false);
   const [videoTime, setVideoTime] = useState([])
-  const [inViewPort, setInviewPort] = useState([])
   const navigate = useNavigate()
   useEffect(() => {
     filterDataHandler()
-  }, [categoryName, inViewPort])
+  }, [categoryName])
   // console.log(videoTime);
 
   const popupData = [
@@ -125,8 +122,8 @@ function Home() {
                 setIsPopupModal={setIsPopupModal}
                 isPopupModal={isPopupModal}
                 setVideoTime={setVideoTime}
-                inViewPort={inViewPort}
-                setInviewPort={setInviewPort}
+                isMute={isMute}
+                setIsMute={setIsMute}
               />
             )) :
             <p className={styles.noData}>no data found</p>

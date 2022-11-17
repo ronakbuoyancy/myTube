@@ -5,34 +5,37 @@ import { BsDot } from "react-icons/bs";
 import { GoMute, GoUnmute } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
-// import { Waypoint } from 'react-waypoint';
 import VisibilitySensor from "react-visibility-sensor";
-
+let seekTime = 0
 function VideoCard({
   item,
   setIsPopupModal,
   isPopupModal,
   setVideoTime,
-  inViewPort,
-  setInviewPort
+  isMute,
+  setIsMute
 }) {
   const navigate = useNavigate();
   // const [View, setView] = useState(false);
   // const [seekTime, setSeekTime] = useState(0)
   // const [played, setPlayed] = useState(0);
   const [shouldPlay, updatePlayState] = useState(false);
-  const [isMute, setIsMute] = useState(true);
+
+  //console.log('videocard_seekTime', seekTime);
 
   return (
     <div className={styles.videoCard}>
       <div className={styles.videoScreen}>
         <div className={styles.video}>
-          {isMute ?
-            <GoMute className={styles.mute} onClick={() => setIsMute(false)} /> :
-            <GoUnmute className={styles.mute} onClick={() => setIsMute(true)} />
-          }
+          <div className={styles.muteContainer}
+            onClick={() => setIsMute(!isMute)}>
+            {isMute ?
+              <GoMute className={styles.mute} /> :
+              <GoUnmute className={styles.mute} />
+            }
+          </div>
           <VisibilitySensor
             onChange={(isVisible) => updatePlayState(isVisible)}
             offset={{
@@ -47,8 +50,13 @@ function VideoCard({
               width="100%"
               height="100%"
               muted={isMute}
+              // onSeek={(time) => console.log(time)}
+              onProgress={(time) => {
+                seekTime = time.playedSeconds
+
+              }}
               onClick={() =>
-                navigate("/videoscreen", { state: { selecteditem: item } })
+                navigate("/videoscreen", { state: { selecteditem: item, seekTime: seekTime } })
               }
 
               onDuration={(duration) =>

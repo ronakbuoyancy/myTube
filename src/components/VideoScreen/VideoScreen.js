@@ -25,15 +25,15 @@ function VideoScreen() {
     const [isDisLike, setIsDisLike] = useState(false)
     const [searchModal, setSearchModal] = useState(false)
     const [showReloadIcon, setshowReloadIcon] = useState(false)
-    const [reloadVideo, setReloadVideo] = useState(false)
+    const [reloadVideo, setReloadVideo] = useState(true)
     const [isVideoEnd, setIsVideoEnd] = useState(false)
     const [nextVideo, setNextVideo] = useState()
     const [count, setCount] = useState(10)
     const [filterData, setFilterData] = useState([])
     const [likecount, setLikeCount] = useState(100)
     const [isSubscribe, setIsSubscribe] = useState(false)
-
-    // const videoRef = useRef()
+    const seekTime = location?.state?.seekTime
+    const videoRef = useRef()
     // const [PopupModal, setPopupModal] = useState(false)
     // let randomNumber = Math.floor(Math.random() * 7) + 1
     // let randomNumber = (Math.floor((Math.random() * 10)) > 7) ? Math.floor((Math.random() * 10) - 3) : Math.floor((Math.random() * 10))
@@ -51,7 +51,9 @@ function VideoScreen() {
             icon: BsClock
         },
     ]
-
+    useEffect(() => {
+        videoRef.current.seekTo(seekTime, 'seconds')
+    }, [])
     function generateRandom(min = 1, max = 7) {
 
         let difference = max - min;
@@ -90,7 +92,6 @@ function VideoScreen() {
         let newData = allData.filter((item) => (item.channelName !== videoDetails.channelName))
         setFilterData(newData.filter((item) => (item.id !== videoDetails.id)))
     }, [videoDetails])
-
     return (
         <div>
             <Header
@@ -112,12 +113,15 @@ function VideoScreen() {
                 </div>}
                 <div className={styles.playerWrapper}>
                     <ReactPlayer
+                        ref={videoRef}
                         url={videoDetails.url}
                         className={styles.ReactPlayer}
                         playing={reloadVideo && true}
                         width="100%"
                         height="100%"
                         controls={true}
+                        // onProgress={(time) => console.log(time)}
+
                         onEnded={() => {
                             setshowReloadIcon(true)
                             setIsVideoEnd(true)
@@ -210,21 +214,21 @@ function VideoScreen() {
                         <AiFillDislike onClick={() => {
                             setIsDisLike(!isDisLike)
                             setIsLike(false)
-                            setLikeCount(parseInt(likecount) + 1)
+                            // setLikeCount(parseInt(likecount) + 1)
                         }} /> :
                         <AiOutlineDislike onClick={() => {
                             setIsDisLike(!isDisLike)
                             setIsLike(false)
-                            setLikeCount(parseInt(likecount) - 1)
+                            { isLike && setLikeCount(parseInt(likecount) - 1) }
                         }} />
                     }
                 </div>
                 <div >
                     <RWebShare
                         data={{
-                            text: "Like humans, flamingos make friends for life",
-                            url: "https://on.natgeo.com/2zHaNup",
-                            title: "Share this article on Flamingos"
+                            text: videoDetails.videoTitle,
+                            url: videoDetails.url,
+                            // title: "Share this article on Flamingos"
                         }}
                         onClick={() => console.info("share successful!")}
                     >

@@ -13,7 +13,7 @@ function Header({ setAccountModal, channel, setFindCategory, handleKeyDown, sear
     const location = useLocation()
     const navigate = useNavigate()
     const inputEvent = (e) => {
-        setFindCategory(e.target.value)
+        setFindCategory(e?.target.value)
         // console.log(e.target.value);
     }
     return (
