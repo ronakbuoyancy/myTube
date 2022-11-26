@@ -8,6 +8,7 @@ import { BsCameraReels, BsCameraReelsFill } from "react-icons/bs";
 import { IoMusicalNotesSharp, IoMusicalNotesOutline } from "react-icons/io5";
 import { NavLink } from 'react-router-dom';
 function Footer() {
+    console.log('footer');
     const [activeIcon, setActiveIcon] = useState(null)
     return (
         <div className={styles.footer}>
