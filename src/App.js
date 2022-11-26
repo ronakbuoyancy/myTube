@@ -10,6 +10,7 @@ import Subscriptions from './components/Music/Music';
 import Library from './components/Library/Library';
 
 function App() {
+  console.log('my Tube')
   return (
     <div className="App">
       <Routes>
